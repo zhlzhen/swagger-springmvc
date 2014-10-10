@@ -105,6 +105,7 @@ afterEvaluate { project ->
   project.tasks.findAll { it.name.contains('ToBintrayRepository') }.each {
     it.dependsOn preRelease
   }
+  parent.project.tasks.createReleaseTag.dependsOn publish
 }
 
 task ciPublish {
@@ -115,4 +116,3 @@ task ciPublish {
     logger.quiet("Task :ciPublish will not publish artifacts [${project.version}] as this is not a SNAPSHOT version")
   }
 }
-

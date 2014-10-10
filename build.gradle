@@ -11,12 +11,16 @@ buildscript {
     classpath "com.github.adrianbk:gradle-jvmsrc-plugin:0.6.1"
     classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.0.0"
     classpath 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.1'
+    classpath 'com.github.townsfolk:gradle-release:1.2'
   }
+}
+apply plugin: 'release'
+release {
+  requireBranch = 'release-spike-again'
 }
 
 ext {
   apiKey = System.getenv('GIT_HUB_API_KEY')
-  projectVersion = '0.9.0-SNAPSHOT'
 }
 
 subprojects {
@@ -31,9 +35,6 @@ subprojects {
     provided
     compile.extendsFrom provided
   }
-
-  group = 'com.mangofactory'
-  version = projectVersion
 
   apply plugin: 'com.github.adrianbk.jvmsrc'
   jvmsrc {
@@ -60,14 +61,13 @@ subprojects {
   }
 
   apply plugin: 'maven-publish'
-  apply from: "$rootDir/gradle/publishing.gradle"
 
+  apply from: "$rootDir/gradle/publishing.gradle"
   apply from: "$rootDir/gradle/coverage.gradle"
 
   repositories {
     jcenter()
   }
-
 }
 //This should be moved to a plugin
 task triggerDownstreamBuilds << {
@@ -129,3 +129,4 @@ task triggerDownstreamBuilds << {
 }
 
 task wrapper(type: Wrapper) {}
+
