@@ -8,7 +8,6 @@ import com.mangofactory.swagger.models.alternates.AlternateTypeProvider;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 import com.wordnik.swagger.model.AllowableListValues;
 import com.wordnik.swagger.model.AllowableValues;
-import scala.Option;
 
 import static com.mangofactory.swagger.models.ResolvedTypes.*;
 import static com.mangofactory.swagger.models.property.ApiModelProperties.*;
@@ -76,9 +75,9 @@ public abstract class BaseModelProperty implements ModelProperty {
 
 
   @Override
-  public Option<String> propertyDescription() {
+  public String propertyDescription() {
     String description = getApiModelProperty().transform(toDescription()).orNull();
-    return Option.apply(description);
+    return description;
   }
 
   protected Optional<ApiModelProperty> getApiModelProperty() {

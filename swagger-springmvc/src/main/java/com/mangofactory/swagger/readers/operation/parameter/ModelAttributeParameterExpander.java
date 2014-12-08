@@ -19,9 +19,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static com.mangofactory.swagger.models.ResolvedTypes.asResolved;
-import static com.mangofactory.swagger.models.Types.typeNameFor;
-import static java.lang.reflect.Modifier.isStatic;
+import static com.mangofactory.swagger.models.ResolvedTypes.*;
+import static com.mangofactory.swagger.models.Types.*;
+import static java.lang.reflect.Modifier.*;
 
 class ModelAttributeParameterExpander {
   private static final Logger LOGGER = LoggerFactory.getLogger(ModelAttributeParameterExpander.class);

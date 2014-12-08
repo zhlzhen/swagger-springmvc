@@ -17,7 +17,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.google.common.collect.Lists.*;
-import static com.mangofactory.swagger.ScalaUtils.*;
 import static org.apache.commons.lang.StringUtils.*;
 
 public class ParameterAllowableReader implements Command<RequestMappingContext> {
@@ -51,10 +50,10 @@ public class ParameterAllowableReader implements Command<RequestMappingContext> 
       allowableValues = new AllowableRangeValues(ranges.get(0), ranges.get(1));
     } else if (allowableValueString.contains(",")) {
       Iterable<String> split = Splitter.on(',').trimResults().omitEmptyStrings().split(allowableValueString);
-      allowableValues = new AllowableListValues(toScalaList(newArrayList(split)), "LIST");
+      allowableValues = new AllowableListValues(newArrayList(split), "LIST");
     } else if (!isBlank(allowableValueString)) {
       List<String> singleVal = Arrays.asList(allowableValueString.trim());
-      allowableValues = new AllowableListValues(toScalaList(singleVal), "LIST");
+      allowableValues = new AllowableListValues(singleVal, "LIST");
     }
     return allowableValues;
   }

@@ -16,7 +16,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.method.HandlerMethod;
-import scala.Option;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,7 +26,6 @@ import java.util.Map;
 import static com.google.common.base.Strings.*;
 import static com.google.common.collect.Lists.*;
 import static com.google.common.collect.Maps.*;
-import static com.mangofactory.swagger.ScalaUtils.*;
 import static com.mangofactory.swagger.core.ModelUtils.*;
 import static com.mangofactory.swagger.models.ResolvedTypes.*;
 
@@ -71,7 +69,7 @@ public class DefaultResponseMessageReader extends SwaggerResponseMessageReader {
     if (!Void.class.equals(returnType.getErasedType()) && !Void.TYPE.equals(returnType.getErasedType())) {
       simpleName = ResolvedTypes.typeName(returnType);
     }
-    responseWithModel = new ResponseMessage(httpStatusCode, message, toOption(simpleName));
+    responseWithModel = new ResponseMessage(httpStatusCode, message, simpleName);
     byStatusCode.put(httpStatusCode, responseWithModel);
   }
 
@@ -95,11 +93,11 @@ public class DefaultResponseMessageReader extends SwaggerResponseMessageReader {
         ResponseMessage responseMessage = byStatusCode.get(apiResponse.code());
         if (null == responseMessage) {
           byStatusCode.put(apiResponse.code(),
-                  new ResponseMessage(apiResponse.code(), apiResponse.message(), toOption(overrideTypeName)));
+                  new ResponseMessage(apiResponse.code(), apiResponse.message(), overrideTypeName));
         } else {
-          Option<String> responseModel = responseMessage.responseModel();
+          String responseModel = responseMessage.responseModel();
           if (!isNullOrEmpty(overrideTypeName)) {
-            responseModel = toOption(overrideTypeName);
+            responseModel = overrideTypeName;
           }
           byStatusCode.put(apiResponse.code(),
                   new ResponseMessage(apiResponse.code(), coalese(apiResponse.message(), responseMessage.message()),

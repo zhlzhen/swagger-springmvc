@@ -14,7 +14,6 @@ import java.util.Collection;
 import java.util.List;
 
 import static com.google.common.collect.Lists.*;
-import static com.mangofactory.swagger.ScalaUtils.*;
 
 public class ApiDescriptionReader implements Command<RequestMappingContext> {
 
@@ -47,7 +46,7 @@ public class ApiDescriptionReader implements Command<RequestMappingContext> {
         ApiOperationReader apiOperationReader = new ApiOperationReader(customAnnotationReaders);
         apiOperationReader.execute(context);
         List<Operation> operations = (List<Operation>) context.get("operations");
-        apiDescriptionList.add(new ApiDescription(path, toOption(methodName), toScalaList(operations), false));
+        apiDescriptionList.add(new ApiDescription(path, methodName, operations, false));
       }
     }
     context.put("apiDescriptionList", apiDescriptionList);

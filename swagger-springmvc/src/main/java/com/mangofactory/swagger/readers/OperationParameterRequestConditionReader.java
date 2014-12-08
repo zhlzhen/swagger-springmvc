@@ -13,8 +13,6 @@ import java.util.List;
 
 import static com.google.common.collect.Iterables.*;
 import static com.google.common.collect.Lists.*;
-import static com.mangofactory.swagger.ScalaUtils.*;
-import static scala.collection.JavaConversions.*;
 
 public class OperationParameterRequestConditionReader implements RequestMappingReader {
   @Override
@@ -28,15 +26,14 @@ public class OperationParameterRequestConditionReader implements RequestMappingR
       }
       Parameter parameter = new Parameter(
               expression.getName(),
-              toOption(null),
-              toOption(expression.getValue()),
+              null,
+              expression.getValue(),
               true,
               false,
               "string",
-              new AllowableListValues(collectionAsScalaIterable(newArrayList(expression.getValue())).toList(),
-                      "string"),
+              new AllowableListValues(newArrayList(expression.getValue()), "string"),
               "query",
-              toOption("")
+              ""
       );
 
       parameters.add(parameter);

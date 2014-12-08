@@ -9,7 +9,6 @@ import com.mangofactory.swagger.core.ModelUtils;
 import com.mangofactory.swagger.models.Annotations;
 import com.mangofactory.swagger.models.ModelContext;
 import com.mangofactory.swagger.models.ModelProvider;
-import com.mangofactory.swagger.models.ScalaConverters;
 import com.mangofactory.swagger.readers.operation.HandlerMethodResolver;
 import com.mangofactory.swagger.readers.operation.ResolvedMethodParameter;
 import com.mangofactory.swagger.scanners.RequestMappingContext;
@@ -33,7 +32,6 @@ import java.util.Set;
 
 import static com.google.common.collect.Maps.*;
 import static com.google.common.collect.Sets.*;
-import static com.mangofactory.swagger.ScalaUtils.*;
 import static com.mangofactory.swagger.models.ResolvedTypes.*;
 
 @Component
@@ -134,8 +132,8 @@ public class ApiModelReader implements Command<RequestMappingContext> {
         Model targetModelValue = target.get(sourceModelKey);
         Model sourceModelValue = sModelEntry.getValue();
 
-        Map<String, ModelProperty> targetProperties = fromScalaMap(targetModelValue.properties());
-        Map<String, ModelProperty> sourceProperties = fromScalaMap(sourceModelValue.properties());
+        Map<String, ModelProperty> targetProperties = targetModelValue.properties();
+        Map<String, ModelProperty> sourceProperties = sourceModelValue.properties();
 
         Set<String> newSourcePropKeys = newHashSet(sourceProperties.keySet());
         newSourcePropKeys.removeAll(targetProperties.keySet());
@@ -145,11 +143,11 @@ public class ApiModelReader implements Command<RequestMappingContext> {
         }
 
         // uses scala generated copy constructor.
-        Model mergedModel = targetModelValue.copy(
+        Model mergedModel = new Model(
                 targetModelValue.id(),
                 targetModelValue.name(),
                 targetModelValue.qualifiedType(),
-                ScalaConverters.toScalaLinkedHashMap(mergedTargetProperties),
+                mergedTargetProperties,
                 targetModelValue.description(),
                 targetModelValue.baseModel(),
                 targetModelValue.discriminator(),

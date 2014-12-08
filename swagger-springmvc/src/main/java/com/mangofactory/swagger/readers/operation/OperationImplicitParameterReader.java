@@ -12,8 +12,6 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.List;
 
-import static com.mangofactory.swagger.ScalaUtils.*;
-
 public class OperationImplicitParameterReader extends SwaggerParameterReader {
 
   @Override
@@ -31,14 +29,14 @@ public class OperationImplicitParameterReader extends SwaggerParameterReader {
   public static Parameter getImplicitParameter(ApiImplicitParam param) {
     return new Parameter(
             param.name(),
-            toOption(param.value()),
-            toOption(param.defaultValue()),
+            param.value(),
+            param.defaultValue(),
             param.required(),
             param.allowMultiple(),
             param.dataType(),
             ParameterAllowableReader.allowableValueFromString(param.allowableValues()),
             param.paramType(),
-            toOption(param.access())
+            param.access()
     );
   }
 

@@ -13,7 +13,6 @@ import com.mangofactory.swagger.scanners.ApiListingReferenceScanner;
 import com.mangofactory.swagger.scanners.ApiListingScanner;
 import com.mangofactory.swagger.scanners.RequestMappingContext;
 import com.mangofactory.swagger.scanners.ResourceGroup;
-import com.wordnik.swagger.core.SwaggerSpec;
 import com.wordnik.swagger.model.ApiDescription;
 import com.wordnik.swagger.model.ApiInfo;
 import com.wordnik.swagger.model.ApiListing;
@@ -28,8 +27,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-
-import static com.mangofactory.swagger.ScalaUtils.*;
 
 public class SwaggerApiResourceListing {
   private static final Logger log = LoggerFactory.getLogger(SwaggerApiResourceListing.class);
@@ -80,15 +77,15 @@ public class SwaggerApiResourceListing {
 
     ResourceListing resourceListing = new ResourceListing(
             this.apiVersion,
-            SwaggerSpec.version(),
-            toScalaList(apiListingReferences),
-            toScalaList(authorizationTypes),
-            toOption(apiInfo)
+            "1.2",
+            apiListingReferences,
+            authorizationTypes,
+            apiInfo
     );
 
     log.info("Added a resource listing with ({}) api resources: ", apiListingReferences.size());
     for (ApiListingReference apiListingReference : apiListingReferences) {
-      String path = fromOption(apiListingReference.description());
+      String path = apiListingReference.description();
       String prefix = (path != null && path.startsWith("http")) ? path : DefaultSwaggerController
               .DOCUMENTATION_BASE_PATH;
       log.info("  {} at location: {}{}", path, prefix, apiListingReference.path());

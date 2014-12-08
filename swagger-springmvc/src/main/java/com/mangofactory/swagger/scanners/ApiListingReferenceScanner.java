@@ -22,7 +22,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import static com.google.common.collect.Lists.*;
-import static com.mangofactory.swagger.ScalaUtils.*;
 
 public class ApiListingReferenceScanner {
   private static final String REQUEST_MAPPINGS_EMPTY =
@@ -96,7 +95,7 @@ public class ApiListingReferenceScanner {
       String path = swaggerPathProvider.getResourceListingPath(swaggerGroup, resourceGroupName);
       log.info("Created resource listing Path: {} Description: {} Position: {}",
               path, resourceGroupName, position);
-      this.apiListingReferences.add(new ApiListingReference(path, toOption(listingDescription), position));
+      this.apiListingReferences.add(new ApiListingReference(path, listingDescription, position));
     }
   }
 
