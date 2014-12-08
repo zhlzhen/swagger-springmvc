@@ -38,7 +38,7 @@ public class ParameterNameReader implements Command<RequestMappingContext> {
     Optional<ApiParam> apiParam = Optional.fromNullable(methodParameter.getParameterAnnotation(ApiParam.class));
     apiParam = apiParam.or(annotations.fromHierarchy(methodParameter, ApiParam.class));
     String name;
-    if (apiParam.isPresent() && !hasText(apiParam.get().name())) {
+    if (apiParam.isPresent() && hasText(apiParam.get().name())) {
       name = apiParam.get().name();
     } else {
       name = findParameterNameFromAnnotations(methodParameter);

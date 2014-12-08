@@ -25,7 +25,7 @@ public class ParameterDefaultReader implements Command<RequestMappingContext> {
     Annotation[] methodAnnotations = methodParameter.getParameterAnnotations();
     if (null != methodAnnotations) {
       for (Annotation annotation : methodAnnotations) {
-        if (annotation instanceof ApiParam && !hasText(((ApiParam) annotation).defaultValue())) {
+        if (annotation instanceof ApiParam && hasText(((ApiParam) annotation).defaultValue())) {
           return ((ApiParam) annotation).defaultValue();
         } else if (annotation instanceof RequestParam) {
           return ((RequestParam) annotation).defaultValue();

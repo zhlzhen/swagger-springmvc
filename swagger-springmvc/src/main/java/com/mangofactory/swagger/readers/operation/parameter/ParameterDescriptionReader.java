@@ -13,7 +13,7 @@ public class ParameterDescriptionReader implements Command<RequestMappingContext
     MethodParameter methodParameter = (MethodParameter) context.get("methodParameter");
     ApiParam apiParam = methodParameter.getParameterAnnotation(ApiParam.class);
     String description = methodParameter.getParameterName();
-    if (null != apiParam && !hasText(apiParam.value())) {
+    if (null != apiParam && hasText(apiParam.value())) {
       description = apiParam.value();
     }
     context.put("description", description);

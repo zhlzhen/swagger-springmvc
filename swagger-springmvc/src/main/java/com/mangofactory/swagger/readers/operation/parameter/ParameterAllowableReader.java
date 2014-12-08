@@ -51,7 +51,7 @@ public class ParameterAllowableReader implements Command<RequestMappingContext> 
     } else if (allowableValueString.contains(",")) {
       Iterable<String> split = Splitter.on(',').trimResults().omitEmptyStrings().split(allowableValueString);
       allowableValues = new AllowableListValues(newArrayList(split), "LIST");
-    } else if (!hasText(allowableValueString)) {
+    } else if (hasText(allowableValueString)) {
       List<String> singleVal = Arrays.asList(allowableValueString.trim());
       allowableValues = new AllowableListValues(singleVal, "LIST");
     }
