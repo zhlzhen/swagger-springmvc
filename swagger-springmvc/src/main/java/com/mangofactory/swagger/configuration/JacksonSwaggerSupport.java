@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.mangofactory.swagger.models.property.provider.DefaultModelPropertiesProvider;
 import com.wordnik.swagger.model.ApiListing;
+import com.wordnik.swagger.model.InternalObjectMapperProvider;
 import com.wordnik.swagger.model.ResourceListing;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +30,14 @@ public class JacksonSwaggerSupport implements ApplicationContextAware {
   }
 
   private Module swaggerSerializationModule() {
+    InternalObjectMapperProvider internalObjectMapperProvider = new InternalObjectMapperProvider();
     SimpleModule module = new SimpleModule("SwaggerJacksonModule");
-//    module.addSerializer(ApiListing.class, new SwaggerApiListingJsonSerializer());
-//    module.addSerializer(ResourceListing.class, new SwaggerResourceListingJsonSerializer());
+    ObjectMapper objectMapper = internalObjectMapperProvider.objectMapper();
+    module.addSerializer(ApiListing.class, new SwaggerApiListingJsonSerializer(objectMapper));
+    module.addSerializer(ResourceListing.class, new SwaggerResourceListingJsonSerializer(objectMapper));
     return module;
   }
+
 
   @Autowired
   public void setRequestMappingHandlerAdapter(RequestMappingHandlerAdapter[] requestMappingHandlerAdapters) {

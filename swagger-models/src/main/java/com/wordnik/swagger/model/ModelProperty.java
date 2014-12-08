@@ -1,6 +1,9 @@
 package com.wordnik.swagger.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ModelProperty {
+  @JsonProperty("type")
   private final String aType;
   private final String qualifiedType;
   private final int position;
