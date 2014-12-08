@@ -23,13 +23,11 @@ import com.mangofactory.swagger.paths.AbsoluteSwaggerPathProvider
 import com.mangofactory.swagger.paths.SwaggerPathProvider
 import com.mangofactory.swagger.scanners.ApiListingReferenceScanner
 import com.mangofactory.swagger.scanners.RegexRequestMappingPatternMatcher
-import com.wordnik.swagger.core.SwaggerSpec
 import com.wordnik.swagger.model.*
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
 import spock.lang.Specification
 
 import static com.google.common.collect.Lists.newArrayList
-import static com.mangofactory.swagger.ScalaUtils.*
 
 @Mixin([RequestMappingSupport, SpringSwaggerConfigSupport])
 class SwaggerApiResourceListingSpec extends Specification {
@@ -56,13 +54,13 @@ class SwaggerApiResourceListingSpec extends Specification {
 
     then: "I should should have the correct defaults"
       ResourceListing resourceListing = swaggerCache.getResourceListing("default")
-      def apiListingReferenceList = fromScalaList(resourceListing.apis())
-      def authorizationTypes = fromScalaList(resourceListing.authorizations())
+      def apiListingReferenceList = resourceListing.apis()
+      def authorizationTypes = resourceListing.authorizations()
 
       resourceListing.apiVersion() == "1"
-      resourceListing.swaggerVersion() == SwaggerSpec.version()
+      resourceListing.swaggerVersion() == "1.2"
 
-      fromOption(resourceListing.info()) == null
+      resourceListing.info() == null
       apiListingReferenceList == []
       authorizationTypes == []
   }
@@ -96,7 +94,7 @@ class SwaggerApiResourceListingSpec extends Specification {
 
     then:
       ResourceListing resourceListing = swaggerCache.getResourceListing("default")
-      def authorizationTypes = fromScalaList(resourceListing.authorizations())
+      def authorizationTypes = resourceListing.authorizations()
       def apiKeyAuthType = authorizationTypes[0]
       apiKeyAuthType instanceof ApiKey
       apiKeyAuthType.keyname == "api_key"
@@ -165,7 +163,7 @@ class SwaggerApiResourceListingSpec extends Specification {
       ApiListingReference apiListingReference = resourceListing.apis().head()
       apiListingReference.path() == "http://localhost:8080/context-path/api-docs/swaggerGroup/dummy-class"
       apiListingReference.position() == 0
-      fromOption(apiListingReference.description()) == "Dummy Class"
+      apiListingReference.description() == "Dummy Class"
 
     and:
       ApiListing apiListing =
@@ -183,15 +181,15 @@ class SwaggerApiResourceListingSpec extends Specification {
 
       ApiListingReferenceScanner apiListingReferenceScanner = Mock()
       apiListingReferenceScanner.getApiListingReferences() >> [
-            new ApiListingReference("/b", toOption('b'), 1),
-            new ApiListingReference("/a", toOption('a'), 2)
+            new ApiListingReference("/b", 'b', 1),
+            new ApiListingReference("/a", 'a', 2)
       ]
 
       swaggerApiResourceListing.apiListingReferenceScanner = apiListingReferenceScanner
 
     when:
       swaggerApiResourceListing.initialize()
-      def apis = fromScalaList(swaggerCache.getResourceListing('default').apis())
+      def apis = swaggerCache.getResourceListing('default').apis()
     then:
       apis[0].position == firstPosition
       apis[0].path == firstPath

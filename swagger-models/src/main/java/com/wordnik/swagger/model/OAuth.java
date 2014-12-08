@@ -5,9 +5,9 @@ import java.util.List;
 public class OAuth extends AuthorizationType {
 
   private final List<AuthorizationScope> scopes;
-  private final List<AuthorizationScope> grantTypes;
+  private final List<GrantType> grantTypes;
 
-  public OAuth(List<AuthorizationScope> scopes, List<AuthorizationScope> grantTypes) {
+  public OAuth(List<AuthorizationScope> scopes, List<GrantType> grantTypes) {
     super("oauth2");
     this.scopes = scopes;
     this.grantTypes = grantTypes;
@@ -22,7 +22,7 @@ public class OAuth extends AuthorizationType {
     return scopes;
   }
 
-  public List<AuthorizationScope> grantTypes() {
+  public List<GrantType> grantTypes() {
     return grantTypes;
   }
 }

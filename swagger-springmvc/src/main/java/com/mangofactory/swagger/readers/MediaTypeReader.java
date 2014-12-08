@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Set;
 
 import static com.google.common.collect.Lists.*;
-import static org.apache.commons.lang.StringUtils.*;
+import static org.springframework.util.StringUtils.*;
 
 public class MediaTypeReader implements RequestMappingReader {
 
@@ -37,7 +37,7 @@ public class MediaTypeReader implements RequestMappingReader {
     List<String> producesList = toList(producesMediaTypes);
 
     ApiOperation annotation = context.getApiOperationAnnotation();
-    if (null != annotation && !isBlank(annotation.consumes())) {
+    if (null != annotation && !hasText(annotation.consumes())) {
       consumesList = asList(annotation.consumes());
     }
 
@@ -46,7 +46,7 @@ public class MediaTypeReader implements RequestMappingReader {
       consumesList = Arrays.asList("multipart/form-data");
     }
 
-    if (null != annotation && !isBlank(annotation.produces())) {
+    if (null != annotation && !hasText(annotation.produces())) {
       producesList = asList(annotation.produces());
     }
 

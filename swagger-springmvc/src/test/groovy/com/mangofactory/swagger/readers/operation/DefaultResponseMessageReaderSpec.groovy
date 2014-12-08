@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod
 import spock.lang.Specification
 
 import static com.google.common.collect.Lists.newArrayList
-import static com.mangofactory.swagger.ScalaUtils.fromOption
 
 @Mixin(RequestMappingSupport)
 class DefaultResponseMessageReaderSpec extends Specification {
@@ -82,7 +81,7 @@ class DefaultResponseMessageReaderSpec extends Specification {
       ResponseMessage responseMessage =  result['responseMessages'].find{ it.code == 200 }
     then:
       responseMessage.code() == 200
-      fromOption(responseMessage.responseModel()) == 'BusinessModel'
+      responseMessage.responseModel() == 'BusinessModel'
       responseMessage.message() == "OK"
    }
 }

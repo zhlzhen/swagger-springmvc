@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 import static com.google.common.collect.Maps.newHashMap
-import static com.mangofactory.swagger.ScalaUtils.toOption
 import static com.mangofactory.swagger.models.alternates.Alternates.newRule
 
 @Mixin(RequestMappingSupport)
@@ -86,7 +85,7 @@ class OperationParameterReaderSpec extends Specification {
     where:
       property        | expectedValue
       'name'          | 'businessId'
-      'description'   | toOption('businessId')
+      'description'   | 'businessId'
       'required'      | true
       'allowMultiple' | false
       'allowMultiple' | false

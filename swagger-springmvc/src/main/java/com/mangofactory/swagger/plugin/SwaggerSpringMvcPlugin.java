@@ -42,7 +42,7 @@ import static com.google.common.collect.Lists.*;
 import static com.google.common.collect.Maps.*;
 import static com.mangofactory.swagger.models.alternates.Alternates.*;
 import static java.util.Arrays.asList;
-import static org.apache.commons.lang.StringUtils.*;
+import static org.springframework.util.StringUtils.*;
 
 /**
  * A builder which is intended to be the primary interface into the swagger-springmvc framework.
@@ -424,7 +424,7 @@ public class SwaggerSpringMvcPlugin {
   }
 
   private void configure() {
-    if (isBlank(this.swaggerGroup)) {
+    if (hasText(this.swaggerGroup)) {
       this.swaggerGroup = "default";
     }
 

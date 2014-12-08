@@ -79,7 +79,7 @@ public class SwaggerApiResourceListing {
             this.apiVersion,
             "1.2",
             apiListingReferences,
-            authorizationTypes,
+            authorizationTypes == null ? new ArrayList<AuthorizationType>() : authorizationTypes,
             apiInfo
     );
 

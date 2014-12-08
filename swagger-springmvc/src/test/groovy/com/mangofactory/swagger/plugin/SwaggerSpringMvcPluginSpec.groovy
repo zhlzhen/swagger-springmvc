@@ -25,7 +25,6 @@ import spock.lang.Unroll
 
 import javax.servlet.ServletRequest
 
-import static com.mangofactory.swagger.ScalaUtils.toOption
 import static com.mangofactory.swagger.models.alternates.Alternates.newMapRule
 import static org.springframework.http.HttpStatus.OK
 import static org.springframework.web.bind.annotation.RequestMethod.*
@@ -63,7 +62,7 @@ class SwaggerSpringMvcPluginSpec extends Specification {
 
   def "Swagger global response messages should override the default for a particular RequestMethod"() {
     when:
-      plugin.globalResponseMessage(GET, [new ResponseMessage(OK.value(), "blah", toOption(null))])
+      plugin.globalResponseMessage(GET, [new ResponseMessage(OK.value(), "blah", null)])
           .useDefaultResponseMessages(true)
           .build()
 
@@ -80,7 +79,7 @@ class SwaggerSpringMvcPluginSpec extends Specification {
 
   def "Swagger global response messages should not be used for a particular RequestMethod"() {
     when:
-      plugin.globalResponseMessage(GET, [new ResponseMessage(OK.value(), "blah", toOption(null))])
+      plugin.globalResponseMessage(GET, [new ResponseMessage(OK.value(), "blah", null)])
               .useDefaultResponseMessages(false)
               .build()
 

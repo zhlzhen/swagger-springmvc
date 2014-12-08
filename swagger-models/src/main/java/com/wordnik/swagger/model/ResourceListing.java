@@ -18,23 +18,23 @@ public class ResourceListing {
     this.info = info;
   }
 
-  public String getApiVersion() {
+  public String apiVersion() {
     return apiVersion;
   }
 
-  public String getSwaggerVersion() {
+  public String swaggerVersion() {
     return swaggerVersion;
   }
 
-  public List<ApiListingReference> getApis() {
+  public List<ApiListingReference> apis() {
     return apis;
   }
 
-  public List<AuthorizationType> getAuthorizations() {
+  public List<AuthorizationType> authorizations() {
     return authorizations;
   }
 
-  public ApiInfo getInfo() {
+  public ApiInfo info() {
     return info;
   }
 }

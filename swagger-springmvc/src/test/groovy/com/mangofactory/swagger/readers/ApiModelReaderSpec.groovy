@@ -24,7 +24,6 @@ import spock.lang.Specification
 
 import javax.servlet.http.HttpServletResponse
 
-import static com.mangofactory.swagger.ScalaUtils.*
 import static com.mangofactory.swagger.models.alternates.Alternates.newRule
 
 @Mixin([RequestMappingSupport, ApiOperationSupport, JsonSupport, ModelProviderSupport])
@@ -59,9 +58,9 @@ class ApiModelReaderSpec extends Specification {
       nameProp.qualifiedType() == 'java.lang.String'
       nameProp.position() == 0
       nameProp.required() == false
-      nameProp.description() == toOption(null)
+      nameProp.description() == null
 //      "${nameProp.allowableValues().getClass()}".contains('com.wordnik.swagger.model.AnyAllowableValues')
-      fromOption(nameProp.items()) == null
+      nameProp.items() == null
 
 
 
@@ -96,11 +95,11 @@ class ApiModelReaderSpec extends Specification {
       Map<String, ModelProperty> modelProps = fromScalaMap(model.properties())
       ModelProperty prop = modelProps.name
       prop.type == 'string'
-      fromOption(prop.description()) == 'The name of this business'
+      prop.description() == 'The name of this business'
       prop.required() == true
       println swaggerCoreSerialize(model)
 
-      fromOption(modelProps.numEmployees.description()) == 'Total number of current employees'
+      modelProps.numEmployees.description() == 'Total number of current employees'
       modelProps.numEmployees.required() == false
 
 
@@ -153,10 +152,10 @@ class ApiModelReaderSpec extends Specification {
 
   def contextWithApiDescription(HandlerMethod handlerMethod, List<Operation> operationList = null) {
     RequestMappingContext context = new RequestMappingContext(requestMappingInfo('/somePath'), handlerMethod)
-    def scalaOpList = null == operationList ? emptyScalaList() : toScalaList(operationList)
+    def scalaOpList = null == operationList ? [] : operationList
     ApiDescription description = new ApiDescription(
           "anyPath",
-          toOption("anyDescription"),
+          "anyDescription",
           scalaOpList,
           false
     )

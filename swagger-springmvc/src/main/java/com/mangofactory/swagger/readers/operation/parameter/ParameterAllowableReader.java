@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.google.common.collect.Lists.*;
-import static org.apache.commons.lang.StringUtils.*;
+import static org.springframework.util.StringUtils.*;
 
 public class ParameterAllowableReader implements Command<RequestMappingContext> {
   private static final Logger log = LoggerFactory.getLogger(ParameterAllowableReader.class);
@@ -51,7 +51,7 @@ public class ParameterAllowableReader implements Command<RequestMappingContext> 
     } else if (allowableValueString.contains(",")) {
       Iterable<String> split = Splitter.on(',').trimResults().omitEmptyStrings().split(allowableValueString);
       allowableValues = new AllowableListValues(newArrayList(split), "LIST");
-    } else if (!isBlank(allowableValueString)) {
+    } else if (!hasText(allowableValueString)) {
       List<String> singleVal = Arrays.asList(allowableValueString.trim());
       allowableValues = new AllowableListValues(singleVal, "LIST");
     }

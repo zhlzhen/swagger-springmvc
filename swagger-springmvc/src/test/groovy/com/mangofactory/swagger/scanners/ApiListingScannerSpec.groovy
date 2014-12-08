@@ -8,7 +8,6 @@ import com.mangofactory.swagger.configuration.SwaggerGlobalSettings
 import com.mangofactory.swagger.core.RequestMappingEvaluator
 import com.mangofactory.swagger.mixins.*
 import com.mangofactory.swagger.models.configuration.SwaggerModelsConfiguration
-import com.wordnik.swagger.core.SwaggerSpec
 import com.wordnik.swagger.model.ApiDescription
 import com.wordnik.swagger.model.ApiListing
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo
@@ -17,8 +16,6 @@ import spock.lang.Unroll
 
 import static com.google.common.collect.Lists.newArrayList
 import static com.google.common.collect.Maps.newHashMap
-import static com.mangofactory.swagger.ScalaUtils.fromOption
-import static com.mangofactory.swagger.ScalaUtils.fromScalaList
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE
 import static org.springframework.http.MediaType.APPLICATION_XML_VALUE
 
@@ -61,11 +58,11 @@ class ApiListingScannerSpec extends Specification {
       listing.basePath() == "http://localhost:8080/context-path"
       listing.resourcePath() == "/api/v1/businesses"
       listing.position() == 0
-      fromScalaList(listing.consumes()) == [APPLICATION_JSON_VALUE, APPLICATION_XML_VALUE]
-      fromScalaList(listing.produces()) == [APPLICATION_JSON_VALUE]
-      ApiDescription apiDescription = fromScalaList(listing.apis())[0]
+      listing.consumes() == [APPLICATION_JSON_VALUE, APPLICATION_XML_VALUE]
+      listing.produces() == [APPLICATION_JSON_VALUE]
+      ApiDescription apiDescription = listing.apis()[0]
       apiDescription.path() == '/api/v1/businesses'
-      fromOption(apiDescription.description()) == "methodWithConcreteResponseBody"
+      apiDescription.description() == "methodWithConcreteResponseBody"
       def models = apiDescription.operations().head()
 
   }

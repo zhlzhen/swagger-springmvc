@@ -17,7 +17,6 @@ import com.mangofactory.swagger.readers.ApiModelReader;
 import com.mangofactory.swagger.readers.Command;
 import com.mangofactory.swagger.readers.MediaTypeReader;
 import com.mangofactory.swagger.readers.operation.RequestMappingReader;
-import com.wordnik.swagger.core.SwaggerSpec;
 import com.wordnik.swagger.model.ApiDescription;
 import com.wordnik.swagger.model.ApiListing;
 import com.wordnik.swagger.model.Authorization;
@@ -41,7 +40,7 @@ import static com.google.common.collect.Sets.*;
 public class ApiListingScanner {
   private static final Logger log = LoggerFactory.getLogger(ApiListingScanner.class);
 
-  private String swaggerVersion = SwaggerSpec.version();
+  private String swaggerVersion = "1.2";
   private Map<ResourceGroup, List<RequestMappingContext>> resourceGroupRequestMappings;
   private SwaggerPathProvider swaggerPathProvider;
   private SwaggerGlobalSettings swaggerGlobalSettings;
@@ -114,8 +113,6 @@ public class ApiListingScanner {
         if (null != authorizationContext) {
           authorizations = authorizationContext.getScalaAuthorizations();
         }
-
-//        Option modelOption = toOption(toScalaModelMap(models));
 
         ArrayList sortedDescriptions = new ArrayList(apiDescriptions);
         Collections.sort(sortedDescriptions, this.apiDescriptionOrdering);

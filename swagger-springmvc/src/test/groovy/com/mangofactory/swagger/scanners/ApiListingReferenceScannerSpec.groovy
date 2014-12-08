@@ -1,4 +1,5 @@
 package com.mangofactory.swagger.scanners
+
 import com.mangofactory.swagger.annotations.ApiIgnore
 import com.mangofactory.swagger.core.ClassOrApiAnnotationResourceGrouping
 import com.mangofactory.swagger.core.RequestMappingEvaluator
@@ -14,7 +15,6 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import spock.lang.Specification
 
 import static com.google.common.collect.Lists.newArrayList
-import static com.mangofactory.swagger.ScalaUtils.toOption
 
 @Mixin([AccessorAssertions, RequestMappingSupport])
 class ApiListingReferenceScannerSpec extends Specification {
@@ -25,10 +25,10 @@ class ApiListingReferenceScannerSpec extends Specification {
     then:
       assertAccessor(apiListingReferenceScanner, method, value)
     where:
-      method                         | value
-      'swaggerGroup'                 | 's'
-      'resourceGroupingStrategy'     | new ClassOrApiAnnotationResourceGrouping()
-      'excludeAnnotations'           | []
+      method                     | value
+      'swaggerGroup'             | 's'
+      'resourceGroupingStrategy' | new ClassOrApiAnnotationResourceGrouping()
+      'excludeAnnotations'       | []
   }
 
 
@@ -65,7 +65,6 @@ class ApiListingReferenceScannerSpec extends Specification {
   }
 
 
-
   def "should group controller paths"() {
     when:
       RequestMappingHandlerMapping requestMappingHandlerMapping = Mock()
@@ -73,10 +72,10 @@ class ApiListingReferenceScannerSpec extends Specification {
       RequestMappingInfo accountsRequestMappingInfo = requestMappingInfo("/api/v1/accounts")
 
       requestMappingHandlerMapping.getHandlerMethods() >>
-            [
-                  (businessRequestMappingInfo): dummyHandlerMethod(),
-                  (accountsRequestMappingInfo): dummyHandlerMethod()
-            ]
+              [
+                      (businessRequestMappingInfo): dummyHandlerMethod(),
+                      (accountsRequestMappingInfo): dummyHandlerMethod()
+              ]
 
       ApiListingReferenceScanner apiListingReferenceScanner = new ApiListingReferenceScanner()
 
@@ -95,7 +94,7 @@ class ApiListingReferenceScannerSpec extends Specification {
       apiListingReferences.size == 1
       ApiListingReference businessListingReference = apiListingReferences[0]
       businessListingReference.path() ==
-            'http://localhost:8080/context-path/api-docs/someGroup/dummy-class'
+              'http://localhost:8080/context-path/api-docs/someGroup/dummy-class'
   }
 
   def "grouping of listing references"() {
@@ -106,12 +105,12 @@ class ApiListingReferenceScannerSpec extends Specification {
       RequestMappingHandlerMapping requestMappingHandlerMapping = Mock()
 
       requestMappingHandlerMapping.getHandlerMethods() >> [
-            (requestMappingInfo("/public/{businessId}"))                   : dummyControllerHandlerMethod(),
-            (requestMappingInfo("/public/inventoryTypes"))                 : dummyHandlerMethod(),
-            (requestMappingInfo("/public/{businessId}/accounts"))          : dummyHandlerMethod(),
-            (requestMappingInfo("/public/{businessId}/employees"))         : dummyHandlerMethod(),
-            (requestMappingInfo("/public/{businessId}/inventory"))         : dummyHandlerMethod(),
-            (requestMappingInfo("/public/{businessId}/inventory/products")): dummyHandlerMethod()
+              (requestMappingInfo("/public/{businessId}"))                   : dummyControllerHandlerMethod(),
+              (requestMappingInfo("/public/inventoryTypes"))                 : dummyHandlerMethod(),
+              (requestMappingInfo("/public/{businessId}/accounts"))          : dummyHandlerMethod(),
+              (requestMappingInfo("/public/{businessId}/employees"))         : dummyHandlerMethod(),
+              (requestMappingInfo("/public/{businessId}/inventory"))         : dummyHandlerMethod(),
+              (requestMappingInfo("/public/{businessId}/inventory/products")): dummyHandlerMethod()
       ]
 
       ApiListingReferenceScanner apiListingReferenceScanner = new ApiListingReferenceScanner()
@@ -127,8 +126,8 @@ class ApiListingReferenceScannerSpec extends Specification {
 
       List<ApiListingReference> apiListingReferences = apiListingReferenceScanner.scan()
       apiListingReferences.size() == 2
-      apiListingReferences.find({it.description() == toOption('Dummy Class')})
-      apiListingReferences.find({it.description() == toOption('Group name')})
+      apiListingReferences.find({ it.description() == 'Dummy Class' })
+      apiListingReferences.find({ it.description() == 'Group name' })
 
     and:
       apiListingReferenceScanner.resourceGroupRequestMappings.size() == 2
@@ -143,7 +142,7 @@ class ApiListingReferenceScannerSpec extends Specification {
       RequestMappingHandlerMapping requestMappingHandlerMapping = Mock()
 
       requestMappingHandlerMapping.getHandlerMethods() >> [
-            (requestMappingInfo("/public/{businessId}")): dummyControllerHandlerMethod()
+              (requestMappingInfo("/public/{businessId}")): dummyControllerHandlerMethod()
       ]
 
       ApiListingReferenceScanner apiListingReferenceScanner = new ApiListingReferenceScanner()
