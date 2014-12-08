@@ -35,7 +35,7 @@ public class OperationAuthReader implements RequestMappingReader {
       Authorization[] authorizationAnnotations = apiOperationAnnotation.authorizations();
       if (authorizationAnnotations != null
               && authorizationAnnotations.length > 0
-              && !StringUtils.hasText(authorizationAnnotations[0].value())) {
+              && StringUtils.hasText(authorizationAnnotations[0].value())) {
 
         authorizations = newArrayList();
         for (Authorization authorization : authorizationAnnotations) {

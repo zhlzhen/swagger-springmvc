@@ -19,7 +19,7 @@ public class OperationHttpMethodReader implements RequestMappingReader {
     String requestMethod = currentHttpMethod.toString();
     ApiOperation apiOperationAnnotation = handlerMethod.getMethodAnnotation(ApiOperation.class);
 
-    if (apiOperationAnnotation != null && !StringUtils.hasText(apiOperationAnnotation.httpMethod())) {
+    if (apiOperationAnnotation != null && StringUtils.hasText(apiOperationAnnotation.httpMethod())) {
       String apiMethod = apiOperationAnnotation.httpMethod();
       try {
         RequestMethod.valueOf(apiMethod);

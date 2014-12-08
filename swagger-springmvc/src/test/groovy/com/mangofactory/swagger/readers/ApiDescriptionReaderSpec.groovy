@@ -49,7 +49,7 @@ class ApiDescriptionReaderSpec extends Specification {
         apiDescription.description() == dummyHandlerMethod().method.name
 
         secondApiDescription.path() == prefix + '/somePath/{businessId}'
-        fromOption(secondApiDescription.description()) == dummyHandlerMethod().method.name
+        secondApiDescription.description() == dummyHandlerMethod().method.name
 
       where:
         pathProvider                  | prefix

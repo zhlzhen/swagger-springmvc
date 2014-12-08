@@ -4,7 +4,7 @@ public class AuthorizationScope {
   private final String scope;
   private final String description;
 
-  public AuthorizationScope(String description, String scope) {
+  public AuthorizationScope(String scope, String description) {
     this.description = description;
     this.scope = scope;
   }

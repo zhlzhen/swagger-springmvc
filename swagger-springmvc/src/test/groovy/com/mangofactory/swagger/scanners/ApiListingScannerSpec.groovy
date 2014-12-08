@@ -53,7 +53,7 @@ class ApiListingScannerSpec extends Specification {
       apiListingMap.size() == 1
 
       ApiListing listing = apiListingMap['businesses']
-      listing.swaggerVersion() == SwaggerSpec.version()
+      listing.swaggerVersion() == "1.2"
       listing.apiVersion() == "1.0"
       listing.basePath() == "http://localhost:8080/context-path"
       listing.resourcePath() == "/api/v1/businesses"

@@ -71,7 +71,7 @@ public abstract class SwaggerPathProvider {
    */
   public String getOperationPath(String operationPath) {
     UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromPath("/");
-    if (!StringUtils.hasText(apiResourcePrefix)) {
+    if (StringUtils.hasText(apiResourcePrefix)) {
       uriComponentsBuilder.path(apiResourcePrefix);
     }
     return sanitiseUrl(uriComponentsBuilder.path(operationPath).build().toString());
