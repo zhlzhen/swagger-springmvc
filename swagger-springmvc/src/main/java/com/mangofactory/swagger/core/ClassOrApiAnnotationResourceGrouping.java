@@ -36,7 +36,7 @@ public class ClassOrApiAnnotationResourceGrouping implements ResourceGroupingStr
   public Integer getResourcePosition(RequestMappingInfo requestMappingInfo, HandlerMethod handlerMethod) {
     Class<?> controllerClass = handlerMethod.getBeanType();
     Api apiAnnotation = AnnotationUtils.findAnnotation(controllerClass, Api.class);
-    if (null != apiAnnotation && !hasText(apiAnnotation.value())) {
+    if (null != apiAnnotation && hasText(apiAnnotation.value())) {
       return apiAnnotation.position();
     }
     return 0;

@@ -30,8 +30,8 @@ public class JacksonSwaggerSupport implements ApplicationContextAware {
 
   private Module swaggerSerializationModule() {
     SimpleModule module = new SimpleModule("SwaggerJacksonModule");
-    module.addSerializer(ApiListing.class, new SwaggerApiListingJsonSerializer());
-    module.addSerializer(ResourceListing.class, new SwaggerResourceListingJsonSerializer());
+//    module.addSerializer(ApiListing.class, new SwaggerApiListingJsonSerializer());
+//    module.addSerializer(ResourceListing.class, new SwaggerResourceListingJsonSerializer());
     return module;
   }
 

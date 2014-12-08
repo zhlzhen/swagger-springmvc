@@ -50,7 +50,7 @@ class ApiModelReaderSpec extends Specification {
       model.name() == 'BusinessModel'
       model.qualifiedType() == 'com.mangofactory.swagger.dummy.DummyModels$BusinessModel'
 
-      Map<String, ModelProperty> modelProperties = fromScalaMap(model.properties())
+      Map<String, ModelProperty> modelProperties = model.properties()
       modelProperties.size() == 2
 
       ModelProperty nameProp = modelProperties['name']
@@ -92,9 +92,9 @@ class ApiModelReaderSpec extends Specification {
       model.name() == 'AnnotatedBusinessModel'
       model.qualifiedType() == 'com.mangofactory.swagger.dummy.DummyModels$AnnotatedBusinessModel'
 
-      Map<String, ModelProperty> modelProps = fromScalaMap(model.properties())
+      Map<String, ModelProperty> modelProps = model.properties()
       ModelProperty prop = modelProps.name
-      prop.type == 'string'
+      prop.type() == 'string'
       prop.description() == 'The name of this business'
       prop.required() == true
       println swaggerCoreSerialize(model)
@@ -282,7 +282,7 @@ class ApiModelReaderSpec extends Specification {
       models.containsKey(modelName)
 
       Model model = models[modelName]
-      Map modelProperties = fromScalaMap(model.properties())
+      Map modelProperties = model.properties()
       modelProperties.containsKey('name')
 
       ModelProperty nameProperty = modelProperties['name']
@@ -318,7 +318,7 @@ class ApiModelReaderSpec extends Specification {
       models.containsKey(modelName)
 
       Model model = models[modelName]
-      Map modelProperties = fromScalaMap(model.properties())
+      Map modelProperties = model.properties()
       modelProperties.size() == 2
       modelProperties.containsKey('visibleForSerialize')
       modelProperties.containsKey('alwaysVisible')
@@ -354,7 +354,7 @@ class ApiModelReaderSpec extends Specification {
       models.containsKey(modelName)
 
       Model model = models[modelName]
-      Map modelProperties = fromScalaMap(model.properties())
+      Map modelProperties = model.properties()
       modelProperties.size() == 2
       modelProperties.containsKey('visible_for_serialize')
       modelProperties.containsKey('always_visible')
@@ -387,7 +387,7 @@ class ApiModelReaderSpec extends Specification {
       models.containsKey(modelName)
 
       Model model = models[modelName]
-      Map modelProperties = fromScalaMap(model.properties())
+      Map modelProperties = model.properties()
       modelProperties.containsKey('visibleForSerialize')
 
   }

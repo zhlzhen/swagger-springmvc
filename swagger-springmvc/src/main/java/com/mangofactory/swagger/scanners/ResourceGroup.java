@@ -53,6 +53,7 @@ public class ResourceGroup {
   public String toString() {
     return "ResourceGroup{" +
             "groupName='" + groupName + '\'' +
+            ", position=" + position +
             '}';
   }
 }

@@ -10,11 +10,11 @@ public class AllowableRangeValues implements AllowableValues{
     this.max = max;
   }
 
-  public String getMin() {
+  public String min() {
     return min;
   }
 
-  public String getMax() {
+  public String max() {
     return max;
   }
 }

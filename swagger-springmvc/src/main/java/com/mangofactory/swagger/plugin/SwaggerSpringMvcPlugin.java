@@ -424,7 +424,7 @@ public class SwaggerSpringMvcPlugin {
   }
 
   private void configure() {
-    if (hasText(this.swaggerGroup)) {
+    if (!hasText(this.swaggerGroup)) {
       this.swaggerGroup = "default";
     }
 

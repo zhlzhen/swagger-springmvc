@@ -37,7 +37,7 @@ public class MediaTypeReader implements RequestMappingReader {
     List<String> producesList = toList(producesMediaTypes);
 
     ApiOperation annotation = context.getApiOperationAnnotation();
-    if (null != annotation && !hasText(annotation.consumes())) {
+    if (null != annotation && hasText(annotation.consumes())) {
       consumesList = asList(annotation.consumes());
     }
 
@@ -46,10 +46,13 @@ public class MediaTypeReader implements RequestMappingReader {
       consumesList = Arrays.asList("multipart/form-data");
     }
 
-    if (null != annotation && !hasText(annotation.produces())) {
+
+    if (null != annotation && hasText(annotation.produces())) {
       producesList = asList(annotation.produces());
     }
 
+    //TODO asList() returns unmodifiable collection so any add..() so this add..() can potentially explode,
+    // seems wrong to depend on varying type conversions and logic - either immutable or not
     if (producesList.isEmpty()) {
       producesList.add(MediaType.ALL_VALUE);
     }

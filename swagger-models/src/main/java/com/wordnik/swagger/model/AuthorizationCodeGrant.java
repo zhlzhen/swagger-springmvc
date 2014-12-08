@@ -2,20 +2,20 @@ package com.wordnik.swagger.model;
 
 public class AuthorizationCodeGrant extends GrantType {
 
-  private final String tokenRequestEndpoint;
-  private final String tokenEndpoint;
+  private final TokenRequestEndpoint tokenRequestEndpoint;
+  private final TokenEndpoint tokenEndpoint;
 
-  public AuthorizationCodeGrant(String tokenRequestEndpoint, String tokenEndpoint) {
+  public AuthorizationCodeGrant(TokenRequestEndpoint tokenRequestEndpoint, TokenEndpoint tokenEndpoint) {
     super("authorization_code");
     this.tokenRequestEndpoint = tokenRequestEndpoint;
     this.tokenEndpoint = tokenEndpoint;
   }
 
-  public String tokenRequestEndpoint() {
+  public TokenRequestEndpoint tokenRequestEndpoint() {
     return tokenRequestEndpoint;
   }
 
-  public String tokenEndpoint() {
+  public TokenEndpoint tokenEndpoint() {
     return tokenEndpoint;
   }
 }
