@@ -16,19 +16,19 @@ class ComplexTypeSpec extends Specification {
 
     expect:
       asInput.name() == "ComplexType"
-      asInput.properties().contains(property)
+      asInput.properties().containsKey(property)
       def modelProperty = asInput.properties().get(property)
-      modelProperty.get().type() == type
-      modelProperty.get().qualifiedType() == qualifiedType
-      modelProperty.get().items().isEmpty()
+      modelProperty.type() == type
+      modelProperty.qualifiedType() == qualifiedType
+      modelProperty.items() == null
       Types.isBaseType(type) == isBaseType
 
       asReturn.name() == "ComplexType"
-      asReturn.properties().contains(property)
+      asReturn.properties().containsKey(property)
       def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.get().type() == type
-      retModelProperty.get().qualifiedType() == qualifiedType
-      retModelProperty.get().items().isEmpty()
+      retModelProperty.type() == type
+      retModelProperty.qualifiedType() == qualifiedType
+      retModelProperty.items() == null
       Types.isBaseType(type) == isBaseType
 
     where:
@@ -48,19 +48,19 @@ class ComplexTypeSpec extends Specification {
 
     expect:
       asInput.name() == "RecursiveType"
-      asInput.properties().contains(property)
+      asInput.properties().containsKey(property)
       def modelProperty = asInput.properties().get(property)
-      modelProperty.get().type() == type
-      modelProperty.get().qualifiedType() == qualifiedType
-      modelProperty.get().items().isEmpty()
+      modelProperty.type() == type
+      modelProperty.qualifiedType() == qualifiedType
+      modelProperty.items() == null
       Types.isBaseType(type) == isBaseType
 
       asReturn.name() == "RecursiveType"
-      asReturn.properties().contains(property)
+      asReturn.properties().containsKey(property)
       def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.get().type() == type
-      retModelProperty.get().qualifiedType() == qualifiedType
-      retModelProperty.get().items().isEmpty()
+      retModelProperty.type() == type
+      retModelProperty.qualifiedType() == qualifiedType
+      retModelProperty.items() == null
       Types.isBaseType(type) == isBaseType
 
     where:
@@ -77,19 +77,19 @@ class ComplexTypeSpec extends Specification {
 
     expect:
       asInput.name() == "InheritedComplexType"
-      asInput.properties().contains(property)
+      asInput.properties().containsKey(property)
       def modelProperty = asInput.properties().get(property)
-      modelProperty.get().type() == type
-      modelProperty.get().qualifiedType() == qualifiedType
-      modelProperty.get().items().isEmpty()
+      modelProperty.type() == type
+      modelProperty.qualifiedType() == qualifiedType
+      modelProperty.items() == null
       Types.isBaseType(type) == isBaseType
 
       asReturn.name() == "InheritedComplexType"
-      asReturn.properties().contains(property)
+      asReturn.properties().containsKey(property)
       def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.get().type() == type
-      retModelProperty.get().qualifiedType() == qualifiedType
-      retModelProperty.get().items().isEmpty()
+      retModelProperty.type() == type
+      retModelProperty.qualifiedType() == qualifiedType
+      retModelProperty.items() == null
       Types.isBaseType(type) == isBaseType
 
     where:

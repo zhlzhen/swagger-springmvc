@@ -5,8 +5,8 @@ import com.mangofactory.swagger.mixins.TypesForTestingSupport
 import com.wordnik.swagger.model.Model
 import com.wordnik.swagger.model.ModelRef
 import org.springframework.http.HttpHeaders
-import scala.Option
 import spock.lang.Specification
+import spock.lang.Unroll
 
 import static com.mangofactory.swagger.models.ResolvedTypes.responseTypeName
 
@@ -29,6 +29,7 @@ class ContainerTypesSpec extends Specification {
 
   }
 
+  @Unroll
   def "Model properties of type List, are inferred correctly"() {
     given:
       def sut = typeWithLists()
@@ -38,34 +39,33 @@ class ContainerTypesSpec extends Specification {
 
     expect:
       asInput.name() == "ListsContainer"
-      asInput.properties().contains(property)
+      asInput.properties().containsKey(property)
       def modelProperty = asInput.properties().get(property)
-      modelProperty.get().type() == name
-      !modelProperty.get().items().isEmpty()
-      ModelRef item = modelProperty.get().items().get()
+      modelProperty.type() == name
+      modelProperty.items()
+      ModelRef item = modelProperty.items()
       item.type() == itemType
-      item.ref() == Option.apply(itemRef)
-      item.qualifiedType() == Option.apply(itemQualifiedType)
+      item.ref() == itemRef
+      item.qualifiedType() == itemQualifiedType
 
       asReturn.name() == "ListsContainer"
-      asReturn.properties().contains(property)
+      asReturn.properties().containsKey(property)
       def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.get().type() == name
-      !retModelProperty.get().items().isEmpty()
-      def retItem = retModelProperty.get().items().get()
+      retModelProperty.type() == name
+      retModelProperty.items()
+      def retItem = retModelProperty.items()
       retItem.type() == itemType
-      retItem.ref() == Option.apply(itemRef)
-      retItem.qualifiedType() == Option.apply(itemQualifiedType)
+      retItem.ref() == itemRef
+      retItem.qualifiedType() == itemQualifiedType
 
     where:
       property          | name   | itemType | itemRef       | itemQualifiedType
       "complexTypes"    | "List" | null     | "ComplexType" | "com.mangofactory.swagger.models.ComplexType"
-      "enums"           | "List" | "string" | null          | "com.mangofactory.swagger.models.ExampleEnum"
-      "aliasOfIntegers" | "List" | "int"    | null          | "java.lang.Integer"
-      "strings"         | "List" | "string" | null          | "java.lang.String"
-      "objects"         | "List" | "object" | null          | "java.lang.Object"
+      "enums"           | "List" | "string" | ""            | "com.mangofactory.swagger.models.ExampleEnum"
+      "aliasOfIntegers" | "List" | "int"    | ""            | "java.lang.Integer"
+      "strings"         | "List" | "string" | ""            | "java.lang.String"
+      "objects"         | "List" | "object" | ""            | "java.lang.Object"
   }
-
 
   def "Model properties of type Set, are inferred correctly"() {
     given:
@@ -76,34 +76,35 @@ class ContainerTypesSpec extends Specification {
 
     expect:
       asInput.name() == "SetsContainer"
-      asInput.properties().contains(property)
+      asInput.properties().containsKey(property)
       def modelProperty = asInput.properties().get(property)
-      modelProperty.get().type() == type
-      !modelProperty.get().items().isEmpty()
-      ModelRef item = modelProperty.get().items().get()
+      modelProperty.type() == type
+      modelProperty.items()
+      ModelRef item = modelProperty.items()
       item.type() == itemType
-      item.ref() == Option.apply(itemRef)
-      item.qualifiedType() == Option.apply(itemQualifiedType)
+      item.ref() == itemRef
+      item.qualifiedType() == itemQualifiedType
 
       asReturn.name() == "SetsContainer"
-      asReturn.properties().contains(property)
+      asReturn.properties().containsKey(property)
       def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.get().type() == type
-      !retModelProperty.get().items().isEmpty()
-      def retItem = retModelProperty.get().items().get()
+      retModelProperty.type() == type
+      retModelProperty.items()
+      def retItem = retModelProperty.items()
       retItem.type() == itemType
-      retItem.ref() == Option.apply(itemRef)
-      retItem.qualifiedType() == Option.apply(itemQualifiedType)
+      retItem.ref() == itemRef
+      retItem.qualifiedType() == itemQualifiedType
 
     where:
       property          | type  | itemType | itemRef       | itemQualifiedType
       "complexTypes"    | "Set" | null     | "ComplexType" | "com.mangofactory.swagger.models.ComplexType"
-      "enums"           | "Set" | "string" | null          | "com.mangofactory.swagger.models.ExampleEnum"
-      "aliasOfIntegers" | "Set" | "int"    | null          | "java.lang.Integer"
-      "strings"         | "Set" | "string" | null          | "java.lang.String"
-      "objects"         | "Set" | "object" | null          | "java.lang.Object"
+      "enums"           | "Set" | "string" | ""            | "com.mangofactory.swagger.models.ExampleEnum"
+      "aliasOfIntegers" | "Set" | "int"    | ""            | "java.lang.Integer"
+      "strings"         | "Set" | "string" | ""            | "java.lang.String"
+      "objects"         | "Set" | "object" | ""            | "java.lang.Object"
   }
 
+  @Unroll
   def "Model properties of type Arrays are inferred correctly"() {
     given:
       def sut = typeWithArrays()
@@ -113,33 +114,33 @@ class ContainerTypesSpec extends Specification {
 
     expect:
       asInput.name() == "ArraysContainer"
-      asInput.properties().contains(property)
+      asInput.properties().containsKey(property)
       def modelProperty = asInput.properties().get(property)
-      modelProperty.get().type() == type
-      !modelProperty.get().items().isEmpty()
-      ModelRef item = modelProperty.get().items().get()
+      modelProperty.type() == type
+      modelProperty.items()
+      ModelRef item = modelProperty.items()
       item.type() == itemType
-      item.ref() == Option.apply(itemRef)
-      item.qualifiedType() == Option.apply(itemQualifiedType)
+      item.ref() == itemRef
+      item.qualifiedType() == itemQualifiedType
 
       asReturn.name() == "ArraysContainer"
-      asReturn.properties().contains(property)
+      asReturn.properties().containsKey(property)
       def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.get().type() == type
-      !retModelProperty.get().items().isEmpty()
-      def retItem = retModelProperty.get().items().get()
+      retModelProperty.type() == type
+      retModelProperty.items()
+      def retItem = retModelProperty.items()
       retItem.type() == itemType
-      retItem.ref() == Option.apply(itemRef)
-      retItem.qualifiedType() == Option.apply(itemQualifiedType)
+      retItem.ref() == itemRef
+      retItem.qualifiedType() == itemQualifiedType
 
     where:
       property          | type    | itemType | itemRef       | itemQualifiedType
       "complexTypes"    | "Array" | null     | "ComplexType" | "com.mangofactory.swagger.models.ComplexType"
-      "enums"           | "Array" | "string" | null          | "com.mangofactory.swagger.models.ExampleEnum"
-      "aliasOfIntegers" | "Array" | "int"    | null          | "java.lang.Integer"
-      "strings"         | "Array" | "string" | null          | "java.lang.String"
-      "objects"         | "Array" | "object" | null          | "java.lang.Object"
-      "bytes"           | "Array" | "byte"   | null          | "byte"
+      "enums"           | "Array" | "string" | ""            | "com.mangofactory.swagger.models.ExampleEnum"
+      "aliasOfIntegers" | "Array" | "int"    | ""            | "java.lang.Integer"
+      "strings"         | "Array" | "string" | ""            | "java.lang.String"
+      "objects"         | "Array" | "object" | ""            | "java.lang.Object"
+      "bytes"           | "Array" | "byte"   | ""            | "byte"
   }
 
   def "Model properties of type Map are inferred correctly"() {
@@ -151,24 +152,24 @@ class ContainerTypesSpec extends Specification {
 
     expect:
       asInput.name() == "MapsContainer"
-      asInput.properties().contains(property)
+      asInput.properties().containsKey(property)
       def modelProperty = asInput.properties().get(property)
-      modelProperty.get().type() == type
-      !modelProperty.get().items().isEmpty()
-      ModelRef item = modelProperty.get().items().get()
+      modelProperty.type() == type
+      modelProperty.items()
+      ModelRef item = modelProperty.items()
       item.type() == null
-      item.ref() == Option.apply(itemRef)
-      item.qualifiedType() == Option.apply(itemQualifiedType)
+      item.ref() == itemRef
+      item.qualifiedType() == itemQualifiedType
 
       asReturn.name() == "MapsContainer"
-      asReturn.properties().contains(property)
+      asReturn.properties().containsKey(property)
       def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.get().type() == type
-      !retModelProperty.get().items().isEmpty()
-      def retItem = retModelProperty.get().items().get()
+      retModelProperty.type() == type
+      retModelProperty.items()
+      def retItem = retModelProperty.items()
       retItem.type() == null
-      retItem.ref() == Option.apply(itemRef)
-      retItem.qualifiedType() == Option.apply(itemQualifiedType)
+      retItem.ref() == itemRef
+      retItem.qualifiedType() == itemQualifiedType
 
     where:
       property              | type   | itemRef                      | itemQualifiedType
@@ -176,7 +177,6 @@ class ContainerTypesSpec extends Specification {
       "stringToSimpleType"  | "List" | "Entry«string,SimpleType»"   | "com.mangofactory.swagger.models.alternates.Entry"
       "complexToSimpleType" | "List" | "Entry«Category,SimpleType»" | "com.mangofactory.swagger.models.alternates.Entry"
   }
-
 
   def "Model properties of type Map are inferred correctly on generic host"() {
     given:
@@ -193,24 +193,24 @@ class ContainerTypesSpec extends Specification {
 
     expect:
       asInput.name() == "MapsContainer"
-      asInput.properties().contains(property)
+      asInput.properties().containsKey(property)
       def modelProperty = asInput.properties().get(property)
-      modelProperty.get().type() == type
-      !modelProperty.get().items().isEmpty()
-      ModelRef item = modelProperty.get().items().get()
+      modelProperty.type() == type
+      modelProperty.items()
+      ModelRef item = modelProperty.items()
       item.type() == null
-      item.ref() == Option.apply(itemRef)
-      item.qualifiedType() == Option.apply(itemQualifiedType)
+      item.ref() == itemRef
+      item.qualifiedType() == itemQualifiedType
 
       asReturn.name() == "MapsContainer"
-      asReturn.properties().contains(property)
+      asReturn.properties().containsKey(property)
       def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.get().type() == type
-      !retModelProperty.get().items().isEmpty()
-      def retItem = retModelProperty.get().items().get()
+      retModelProperty.type() == type
+      retModelProperty.items()
+      def retItem = retModelProperty.items()
       retItem.type() == null
-      retItem.ref() == Option.apply(itemRef)
-      retItem.qualifiedType() == Option.apply(itemQualifiedType)
+      retItem.ref() == itemRef
+      retItem.qualifiedType() == itemQualifiedType
 
     where:
       property              | type   | itemRef                      | itemQualifiedType
@@ -218,5 +218,4 @@ class ContainerTypesSpec extends Specification {
       "stringToSimpleType"  | "List" | "Entry«string,SimpleType»"   | "com.mangofactory.swagger.models.alternates.Entry"
       "complexToSimpleType" | "List" | "Entry«Category,SimpleType»" | "com.mangofactory.swagger.models.alternates.Entry"
   }
-
 }

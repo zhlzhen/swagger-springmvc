@@ -15,11 +15,11 @@ class AlternatePropertiesSpec extends Specification {
       Model model = modelProvider.modelFor(inputParam(typeWithAlternateProperty())).get()
     expect:
       model.name() == "TypeWithAlternateProperty"
-      model.properties().contains("localDate")
+      model.properties().containsKey("localDate")
       def modelProperty = model.properties().get("localDate")
-      modelProperty.get().type() == "string"
-      modelProperty.get().qualifiedType() == "java.lang.String"
-      modelProperty.get().items().isEmpty()
+      modelProperty.type() == "string"
+      modelProperty.qualifiedType() == "java.lang.String"
+      modelProperty.items() == null
   }
 
   def "ResponseEntity«Void» renders correctly when an alternate type is provided" () {
@@ -28,10 +28,10 @@ class AlternatePropertiesSpec extends Specification {
       Model model = modelProvider.modelFor(inputParam(typeWithResponseEntityOfVoid())).get()
     expect:
       model.name() == "GenericType«ResponseEntity«Void»»"
-      model.properties().contains("genericField")
+      model.properties().containsKey("genericField")
       def modelProperty = model.properties().get("genericField")
-      modelProperty.get().type() == "Void"
-      modelProperty.get().qualifiedType() == "java.lang.Void"
-      modelProperty.get().items().isEmpty()
+      modelProperty.type() == "Void"
+      modelProperty.qualifiedType() == "java.lang.Void"
+      modelProperty.items() == null
   }
 }

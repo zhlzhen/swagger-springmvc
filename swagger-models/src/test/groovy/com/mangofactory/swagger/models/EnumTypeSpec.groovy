@@ -3,7 +3,6 @@ package com.mangofactory.swagger.models
 import com.mangofactory.swagger.mixins.ModelProviderSupport
 import com.mangofactory.swagger.mixins.TypesForTestingSupport
 import com.wordnik.swagger.model.Model
-import scala.collection.JavaConversions
 import spock.lang.Specification
 
 import static com.google.common.collect.Lists.*
@@ -20,23 +19,23 @@ class EnumTypeSpec extends Specification {
 
     expect:
       asInput.name() == "ExampleWithEnums"
-      asInput.properties().contains("exampleEnum")
+      asInput.properties().containsKey("exampleEnum")
       def modelPropertyOption = asInput.properties().get("exampleEnum")
-      def modelProperty = modelPropertyOption.get()
+      def modelProperty = modelPropertyOption
       modelProperty.type() == "string"
       modelProperty.qualifiedType() == "com.mangofactory.swagger.models.ExampleEnum"
-      modelProperty.items().isEmpty()
+      modelProperty.items() == null
       Types.isBaseType(modelProperty.type())
-      modelProperty.allowableValues().values() == JavaConversions.collectionAsScalaIterable(list).toList()
+      modelProperty.allowableValues().values() == list
 
       asReturn.name() == "ExampleWithEnums"
-      asReturn.properties().contains("exampleEnum")
+      asReturn.properties().containsKey("exampleEnum")
       def retModelPropertyOption = asReturn.properties().get("exampleEnum")
-      def retModelProperty = retModelPropertyOption.get()
+      def retModelProperty = retModelPropertyOption
       retModelProperty.type() == "string"
       retModelProperty.qualifiedType() == "com.mangofactory.swagger.models.ExampleEnum"
-      retModelProperty.items().isEmpty()
+      retModelProperty.items() == null
       Types.isBaseType(modelProperty.type())
-      retModelProperty.allowableValues().values() == JavaConversions.collectionAsScalaIterable(list).toList()
+      retModelProperty.allowableValues().values() == list
   }
 }
