@@ -1,7 +1,10 @@
 package com.wordnik.swagger.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class ModelRef {
 
+  @JsonProperty("type")
   private final String aTtype;
   private final String ref;
   private final String qualifiedType;
