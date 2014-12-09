@@ -1,7 +1,13 @@
 package com.wordnik.swagger.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+
 public class Parameter {
 
+  @JsonProperty
+  @JsonUnwrapped
+  private final ParameterType parameterType;
   private final String name;
   private final String description;
   private final String defaultValue;
@@ -23,6 +29,51 @@ public class Parameter {
     this.allowableValues = allowableValues;
     this.paramType = paramType;
     this.paramAccess = paramAccess;
+    this.parameterType = typeFromDataType();
+  }
+
+  private ParameterType typeFromDataType() {
+    if (isType("int")) {
+      return new PrimitiveFormatParameterType("integer", "int32");
+    }
+    if (isType("long")) {
+      return new PrimitiveFormatParameterType("integer", "int64");
+    }
+    if (isType("float")) {
+      return new PrimitiveFormatParameterType("integer", "int64");
+    }
+    if (isType("double")) {
+      return new PrimitiveFormatParameterType("number", "double");
+    }
+    if (isType("string")) {
+      return new PrimitiveParameterType("string");
+    }
+    if (isType("byte")) {
+      return new PrimitiveFormatParameterType("string", "byte");
+    }
+    if (isType("boolean")) {
+      return new PrimitiveParameterType("boolean");
+    }
+    if (isType("Date") || isType("DateTime")) {
+      return new PrimitiveFormatParameterType("string", "date-time");
+    }
+    if (isType("BigDecimal") || isType("BigInteger")) {
+      return new PrimitiveParameterType("number");
+    }
+    if (isType("UUID")) {
+      return new PrimitiveFormatParameterType("string", "uuid");
+    }
+    if (isType("date")) {
+      return new PrimitiveFormatParameterType("string", "date");
+    }
+    if (isType("date-time")) {
+      return new PrimitiveFormatParameterType("string", "date-time");
+    }
+    return new PrimitiveParameterType(dataType);
+  }
+
+  private boolean isType(String ofType) {
+    return dataType.equals(ofType);
   }
 
   public String name() {
@@ -59,5 +110,9 @@ public class Parameter {
 
   public String paramAccess() {
     return paramAccess;
+  }
+
+  public ParameterType parameterType() {
+    return parameterType;
   }
 }
