@@ -1,5 +1,6 @@
 package com.wordnik.swagger.model;
 
+
 public class ImplicitGrant extends GrantType {
   private final LoginEndpoint loginEndpoint;
   private final String tokenName;

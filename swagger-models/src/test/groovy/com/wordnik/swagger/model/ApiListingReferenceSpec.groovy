@@ -1,6 +1,6 @@
 package com.wordnik.swagger.model
 
-class ApiListingReferenceSpec extends JsonSerializationSpec {
+class ApiListingReferenceSpec extends InternalJsonSerializationSpec {
 
   def "should serialize"() {
     setup:

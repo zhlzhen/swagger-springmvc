@@ -2,7 +2,7 @@ package com.wordnik.swagger.model
 
 import static com.google.common.collect.Lists.newArrayList
 
-class ResourceListingSpec extends JsonSerializationSpec {
+class ResourceListingSpec extends InternalJsonSerializationSpec {
 
   def "should serialize"() {
     when:
@@ -18,11 +18,8 @@ class ResourceListingSpec extends JsonSerializationSpec {
 
 
   def resourceListing() {
-
-
     List<AuthorizationScope> authorizationScopeList = newArrayList();
     authorizationScopeList.add(new AuthorizationScope("global", "access all"));
-
 
     List<GrantType> grantTypes = newArrayList();
 
@@ -41,6 +38,17 @@ class ResourceListingSpec extends JsonSerializationSpec {
             .grantTypes(grantTypes)
             .build();
 
+    ApiInfo apiInfo = apiInfo()
+
+    new ResourceListing(
+            "apiVersion",
+            "swagger version",
+            [apiListingReference()],
+            [oAuth],
+            apiInfo)
+  }
+
+  private ApiInfo apiInfo() {
     ApiInfo apiInfo = new ApiInfo(
             " Title",
             "Api Description",
@@ -49,12 +57,6 @@ class ResourceListingSpec extends JsonSerializationSpec {
             "Licence Type",
             "License URL"
     );
-
-    new ResourceListing(
-            "apiVersion",
-            "swagger version",
-            [apiListingReference()],
-            [oAuth],
-            apiInfo)
+    apiInfo
   }
 }

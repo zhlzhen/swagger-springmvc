@@ -1,4 +1,5 @@
 package com.mangofactory.swagger.readers
+
 import com.fasterxml.classmate.TypeResolver
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig
 import com.mangofactory.swagger.configuration.SwaggerGlobalSettings
@@ -62,8 +63,6 @@ class ApiModelReaderSpec extends Specification {
 //      "${nameProp.allowableValues().getClass()}".contains('com.wordnik.swagger.model.AnyAllowableValues')
       nameProp.items() == null
 
-
-
       //TODO test these remaining
 //      println model.description()
 //      println model.baseModel()
@@ -97,13 +96,9 @@ class ApiModelReaderSpec extends Specification {
       prop.type() == 'string'
       prop.description() == 'The name of this business'
       prop.required() == true
-      println swaggerCoreSerialize(model)
 
       modelProps.numEmployees.description() == 'Total number of current employees'
       modelProps.numEmployees.required() == false
-
-
-
   }
 
   def "Should pull models from Api Operation response class"() {
@@ -154,10 +149,10 @@ class ApiModelReaderSpec extends Specification {
     RequestMappingContext context = new RequestMappingContext(requestMappingInfo('/somePath'), handlerMethod)
     def scalaOpList = null == operationList ? [] : operationList
     ApiDescription description = new ApiDescription(
-          "anyPath",
-          "anyDescription",
-          scalaOpList,
-          false
+            "anyPath",
+            "anyDescription",
+            scalaOpList,
+            false
     )
     context.put("apiDescriptionList", [description])
 
@@ -173,9 +168,9 @@ class ApiModelReaderSpec extends Specification {
   def "should only generate models for request parameters that are annotated with Springs RequestBody"() {
     given:
       HandlerMethod handlerMethod = dummyHandlerMethod('methodParameterWithRequestBodyAnnotation',
-            DummyModels.BusinessModel,
-            HttpServletResponse.class,
-            DummyModels.AnnotatedBusinessModel.class
+              DummyModels.BusinessModel,
+              HttpServletResponse.class,
+              DummyModels.AnnotatedBusinessModel.class
       )
       RequestMappingContext context = new RequestMappingContext(requestMappingInfo('/somePath'), handlerMethod)
 
@@ -229,7 +224,7 @@ class ApiModelReaderSpec extends Specification {
     given:
       HandlerMethod handlerMethod = handlerMethodIn(BusinessService, 'getResponseEntity', String)
       RequestMappingContext context =
-            new RequestMappingContext(requestMappingInfo('/businesses/responseEntity/{businessId}'), handlerMethod)
+              new RequestMappingContext(requestMappingInfo('/businesses/responseEntity/{businessId}'), handlerMethod)
 
       def settings = new SwaggerGlobalSettings()
       def config = new SpringSwaggerConfig()
@@ -238,9 +233,9 @@ class ApiModelReaderSpec extends Specification {
       settings.ignorableParameterTypes = config.defaultIgnorableParameterTypes()
       settings.alternateTypeProvider = modelConfig.alternateTypeProvider(typeResolver)
       settings.alternateTypeProvider.addRule(newRule(typeResolver.resolve(ResponseEntity.class, WildcardType.class),
-            typeResolver.resolve(WildcardType.class)));
+              typeResolver.resolve(WildcardType.class)));
       settings.alternateTypeProvider.addRule(newRule(typeResolver.resolve(HttpEntity.class, WildcardType.class),
-            typeResolver.resolve(WildcardType.class)));
+              typeResolver.resolve(WildcardType.class)));
       context.put("swaggerGlobalSettings", settings)
 
     when:

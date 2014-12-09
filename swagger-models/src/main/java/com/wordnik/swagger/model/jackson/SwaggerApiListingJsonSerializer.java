@@ -1,4 +1,4 @@
-package com.mangofactory.swagger.configuration;
+package com.wordnik.swagger.model.jackson;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

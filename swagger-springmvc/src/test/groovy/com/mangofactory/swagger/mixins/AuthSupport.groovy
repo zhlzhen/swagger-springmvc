@@ -49,6 +49,7 @@ class AuthSupport {
 
   def assertDefaultAuth(json) {
     def oauth2 = json.authorizations['oauth2']
+
     assert oauth2.type == "oauth2"
     assert oauth2.scopes[0].scope == "global"
     assert oauth2.scopes[0].description == "access all"

@@ -1,12 +1,14 @@
 package com.wordnik.swagger.model;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class ResourceListing {
   private final String apiVersion;
   private final String swaggerVersion;
   private final List<ApiListingReference> apis;
-  private final List<AuthorizationType> authorizations;
+  private final LinkedHashMap<String, AuthorizationType> authorizations;
   private final ApiInfo info;
 
   public ResourceListing(String apiVersion, String swaggerVersion, List<ApiListingReference> apis, List
@@ -14,8 +16,19 @@ public class ResourceListing {
     this.apiVersion = apiVersion;
     this.swaggerVersion = swaggerVersion;
     this.apis = apis;
-    this.authorizations = authorizations;
+    this.authorizations = initializeAuthTypes(authorizations);
     this.info = info;
+  }
+
+  private LinkedHashMap<String, AuthorizationType> initializeAuthTypes(List<AuthorizationType> authorizationTypes) {
+    if (null != authorizationTypes) {
+      LinkedHashMap<String, AuthorizationType> map = new LinkedHashMap<String, AuthorizationType>();
+      for (AuthorizationType authorizationType : authorizationTypes) {
+        map.put(authorizationType.type(), authorizationType);
+      }
+      return map;
+    }
+    return null;
   }
 
   public String apiVersion() {
@@ -31,7 +44,7 @@ public class ResourceListing {
   }
 
   public List<AuthorizationType> authorizations() {
-    return authorizations;
+    return new ArrayList<AuthorizationType>(authorizations.values());
   }
 
   public ApiInfo info() {

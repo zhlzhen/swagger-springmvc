@@ -1,13 +1,13 @@
 package com.mangofactory.swagger.controllers
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.mangofactory.swagger.configuration.JacksonSwaggerSupport
 import com.mangofactory.swagger.core.SwaggerApiResourceListing
 import com.mangofactory.swagger.core.SwaggerCache
 import com.mangofactory.swagger.mixins.ApiListingSupport
 import com.mangofactory.swagger.mixins.AuthSupport
 import com.mangofactory.swagger.mixins.JsonSupport
 import com.wordnik.swagger.model.AuthorizationType
+import com.wordnik.swagger.model.jackson.SwaggerJacksonProvider
 import org.springframework.http.MediaType
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.test.web.servlet.MockMvc
@@ -36,17 +36,14 @@ class DefaultSwaggerControllerSpec extends Specification {
 
     jackson2.setSupportedMediaTypes([MediaType.ALL, MediaType.APPLICATION_JSON])
 
-    JacksonSwaggerSupport jacksonScalaSupport = new JacksonSwaggerSupport()
-    ObjectMapper mapper = new ObjectMapper()
-    mapper.registerModule(jacksonScalaSupport.swaggerSerializationModule())
+    def mapper = new ObjectMapper()
+    mapper.registerModule(new SwaggerJacksonProvider().swaggerJacksonModule())
 
     jackson2.setObjectMapper(mapper)
     mockMvc = standaloneSetup(controller)
             .setSingleView(mockView)
             .setMessageConverters(jackson2)
             .build();
-
-
   }
 
   @Unroll("path: #path")
@@ -60,9 +57,9 @@ class DefaultSwaggerControllerSpec extends Specification {
 
     when:
       MvcResult result = mockMvc.perform(
-              get(path).accept(MediaType.APPLICATION_JSON)
+              get(path)
       )
-      .andDo(print()).andReturn()
+              .andDo(print()).andReturn()
 
       def responseJson = jsonBodyResponse(result)
     then:
