@@ -48,20 +48,20 @@ class ApiModelReaderSpec extends Specification {
       Map<String, Model> models = result.get("models")
       Model model = models['BusinessModel']
       model.id == 'BusinessModel'
-      model.name() == 'BusinessModel'
-      model.qualifiedType() == 'com.mangofactory.swagger.dummy.DummyModels$BusinessModel'
+      model.getName() == 'BusinessModel'
+      model.getQualifiedType() == 'com.mangofactory.swagger.dummy.DummyModels$BusinessModel'
 
-      Map<String, ModelProperty> modelProperties = model.properties()
+      Map<String, ModelProperty> modelProperties = model.getProperties()
       modelProperties.size() == 2
 
       ModelProperty nameProp = modelProperties['name']
-      nameProp.type() == 'string'
-      nameProp.qualifiedType() == 'java.lang.String'
-      nameProp.position() == 0
-      nameProp.required() == false
-      nameProp.description() == null
+      nameProp.getType() == 'string'
+      nameProp.getQualifiedType() == 'java.lang.String'
+      nameProp.getPosition() == 0
+      nameProp.getRequired() == false
+      nameProp.getDescription() == null
 //      "${nameProp.allowableValues().getClass()}".contains('com.wordnik.swagger.model.AnyAllowableValues')
-      nameProp.items() == null
+      nameProp.getItems() == null
 
       //TODO test these remaining
 //      println model.description()
@@ -88,17 +88,17 @@ class ApiModelReaderSpec extends Specification {
       Map<String, Model> models = result.get("models")
       Model model = models['AnnotatedBusinessModel']
       model.id == 'AnnotatedBusinessModel'
-      model.name() == 'AnnotatedBusinessModel'
-      model.qualifiedType() == 'com.mangofactory.swagger.dummy.DummyModels$AnnotatedBusinessModel'
+      model.getName() == 'AnnotatedBusinessModel'
+      model.getQualifiedType() == 'com.mangofactory.swagger.dummy.DummyModels$AnnotatedBusinessModel'
 
-      Map<String, ModelProperty> modelProps = model.properties()
+      Map<String, ModelProperty> modelProps = model.getProperties()
       ModelProperty prop = modelProps.name
-      prop.type() == 'string'
-      prop.description() == 'The name of this business'
-      prop.required() == true
+      prop.getType() == 'string'
+      prop.getDescription() == 'The name of this business'
+      prop.getRequired() == true
 
-      modelProps.numEmployees.description() == 'Total number of current employees'
-      modelProps.numEmployees.required() == false
+      modelProps.numEmployees.getDescription() == 'Total number of current employees'
+      modelProps.numEmployees.getRequired() == false
   }
 
   def "Should pull models from Api Operation response class"() {
@@ -119,7 +119,7 @@ class ApiModelReaderSpec extends Specification {
       Map<String, Model> models = result.get("models")
     then:
       println models
-      models['FunkyBusiness'].qualifiedType() == 'com.mangofactory.swagger.dummy.DummyModels$FunkyBusiness'
+      models['FunkyBusiness'].getQualifiedType() == 'com.mangofactory.swagger.dummy.DummyModels$FunkyBusiness'
   }
 
   def "Should pull models from operation's ApiResponse annotations"() {
@@ -141,8 +141,8 @@ class ApiModelReaderSpec extends Specification {
     then:
       println models
       models.size() == 2
-      models['RestError'].qualifiedType() == 'com.mangofactory.swagger.dummy.RestError'
-      models['Void'].qualifiedType() == 'java.lang.Void'
+      models['RestError'].getQualifiedType() == 'com.mangofactory.swagger.dummy.RestError'
+      models['Void'].getQualifiedType() == 'java.lang.Void'
   }
 
   def contextWithApiDescription(HandlerMethod handlerMethod, List<Operation> operationList = null) {
@@ -277,11 +277,11 @@ class ApiModelReaderSpec extends Specification {
       models.containsKey(modelName)
 
       Model model = models[modelName]
-      Map modelProperties = model.properties()
+      Map modelProperties = model.getProperties()
       modelProperties.containsKey('name')
 
       ModelProperty nameProperty = modelProperties['name']
-      nameProperty.description().isEmpty() == false
+      nameProperty.getDescription().isEmpty() == false
 
   }
 
@@ -313,7 +313,7 @@ class ApiModelReaderSpec extends Specification {
       models.containsKey(modelName)
 
       Model model = models[modelName]
-      Map modelProperties = model.properties()
+      Map modelProperties = model.getProperties()
       modelProperties.size() == 2
       modelProperties.containsKey('visibleForSerialize')
       modelProperties.containsKey('alwaysVisible')
@@ -349,7 +349,7 @@ class ApiModelReaderSpec extends Specification {
       models.containsKey(modelName)
 
       Model model = models[modelName]
-      Map modelProperties = model.properties()
+      Map modelProperties = model.getProperties()
       modelProperties.size() == 2
       modelProperties.containsKey('visible_for_serialize')
       modelProperties.containsKey('always_visible')
@@ -382,7 +382,7 @@ class ApiModelReaderSpec extends Specification {
       models.containsKey(modelName)
 
       Model model = models[modelName]
-      Map modelProperties = model.properties()
+      Map modelProperties = model.getProperties()
       modelProperties.containsKey('visibleForSerialize')
 
   }

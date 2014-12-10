@@ -38,25 +38,25 @@ class ContainerTypesSpec extends Specification {
       Model asReturn = provider.modelFor(ModelContext.returnValue(sut)).get()
 
     expect:
-      asInput.name() == "ListsContainer"
-      asInput.properties().containsKey(property)
-      def modelProperty = asInput.properties().get(property)
-      modelProperty.type() == name
-      modelProperty.items()
-      ModelRef item = modelProperty.items()
-      item.type() == itemType
-      item.ref() == itemRef
-      item.qualifiedType() == itemQualifiedType
+      asInput.getName() == "ListsContainer"
+      asInput.getProperties().containsKey(property)
+      def modelProperty = asInput.getProperties().get(property)
+      modelProperty.getType() == name
+      modelProperty.getItems()
+      ModelRef item = modelProperty.getItems()
+      item.getType() == itemType
+      item.getRef() == itemRef
+      item.getQualifiedType() == itemQualifiedType
 
-      asReturn.name() == "ListsContainer"
-      asReturn.properties().containsKey(property)
-      def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.type() == name
-      retModelProperty.items()
-      def retItem = retModelProperty.items()
-      retItem.type() == itemType
-      retItem.ref() == itemRef
-      retItem.qualifiedType() == itemQualifiedType
+      asReturn.getName() == "ListsContainer"
+      asReturn.getProperties().containsKey(property)
+      def retModelProperty = asReturn.getProperties().get(property)
+      retModelProperty.getType() == name
+      retModelProperty.getItems()
+      def retItem = retModelProperty.getItems()
+      retItem.getType() == itemType
+      retItem.getRef() == itemRef
+      retItem.getQualifiedType() == itemQualifiedType
 
     where:
       property          | name   | itemType | itemRef       | itemQualifiedType
@@ -75,25 +75,25 @@ class ContainerTypesSpec extends Specification {
       Model asReturn = provider.modelFor(ModelContext.returnValue(sut)).get()
 
     expect:
-      asInput.name() == "SetsContainer"
-      asInput.properties().containsKey(property)
-      def modelProperty = asInput.properties().get(property)
-      modelProperty.type() == type
-      modelProperty.items()
-      ModelRef item = modelProperty.items()
-      item.type() == itemType
-      item.ref() == itemRef
-      item.qualifiedType() == itemQualifiedType
+      asInput.getName() == "SetsContainer"
+      asInput.getProperties().containsKey(property)
+      def modelProperty = asInput.getProperties().get(property)
+      modelProperty.getType() == type
+      modelProperty.getItems()
+      ModelRef item = modelProperty.getItems()
+      item.getType() == itemType
+      item.getRef() == itemRef
+      item.getQualifiedType() == itemQualifiedType
 
-      asReturn.name() == "SetsContainer"
-      asReturn.properties().containsKey(property)
-      def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.type() == type
-      retModelProperty.items()
-      def retItem = retModelProperty.items()
-      retItem.type() == itemType
-      retItem.ref() == itemRef
-      retItem.qualifiedType() == itemQualifiedType
+      asReturn.getName() == "SetsContainer"
+      asReturn.getProperties().containsKey(property)
+      def retModelProperty = asReturn.getProperties().get(property)
+      retModelProperty.getType() == type
+      retModelProperty.getItems()
+      def retItem = retModelProperty.getItems()
+      retItem.getType() == itemType
+      retItem.getRef() == itemRef
+      retItem.getQualifiedType() == itemQualifiedType
 
     where:
       property          | type  | itemType | itemRef       | itemQualifiedType
@@ -113,25 +113,25 @@ class ContainerTypesSpec extends Specification {
       Model asReturn = provider.modelFor(ModelContext.returnValue(sut)).get()
 
     expect:
-      asInput.name() == "ArraysContainer"
-      asInput.properties().containsKey(property)
-      def modelProperty = asInput.properties().get(property)
-      modelProperty.type() == type
-      modelProperty.items()
-      ModelRef item = modelProperty.items()
-      item.type() == itemType
-      item.ref() == itemRef
-      item.qualifiedType() == itemQualifiedType
+      asInput.getName() == "ArraysContainer"
+      asInput.getProperties().containsKey(property)
+      def modelProperty = asInput.getProperties().get(property)
+      modelProperty.getType() == type
+      modelProperty.getItems()
+      ModelRef item = modelProperty.getItems()
+      item.getType() == itemType
+      item.getRef() == itemRef
+      item.getQualifiedType() == itemQualifiedType
 
-      asReturn.name() == "ArraysContainer"
-      asReturn.properties().containsKey(property)
-      def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.type() == type
-      retModelProperty.items()
-      def retItem = retModelProperty.items()
-      retItem.type() == itemType
-      retItem.ref() == itemRef
-      retItem.qualifiedType() == itemQualifiedType
+      asReturn.getName() == "ArraysContainer"
+      asReturn.getProperties().containsKey(property)
+      def retModelProperty = asReturn.getProperties().get(property)
+      retModelProperty.getType() == type
+      retModelProperty.getItems()
+      def retItem = retModelProperty.getItems()
+      retItem.getType() == itemType
+      retItem.getRef() == itemRef
+      retItem.getQualifiedType() == itemQualifiedType
 
     where:
       property          | type    | itemType | itemRef       | itemQualifiedType
@@ -151,25 +151,25 @@ class ContainerTypesSpec extends Specification {
       Model asReturn = provider.modelFor(ModelContext.returnValue(sut)).get()
 
     expect:
-      asInput.name() == "MapsContainer"
-      asInput.properties().containsKey(property)
-      def modelProperty = asInput.properties().get(property)
-      modelProperty.type() == type
-      modelProperty.items()
-      ModelRef item = modelProperty.items()
-      item.type() == null
-      item.ref() == itemRef
-      item.qualifiedType() == itemQualifiedType
+      asInput.getName() == "MapsContainer"
+      asInput.getProperties().containsKey(property)
+      def modelProperty = asInput.getProperties().get(property)
+      modelProperty.getType() == type
+      modelProperty.getItems()
+      ModelRef item = modelProperty.getItems()
+      item.getType() == null
+      item.getRef() == itemRef
+      item.getQualifiedType() == itemQualifiedType
 
-      asReturn.name() == "MapsContainer"
-      asReturn.properties().containsKey(property)
-      def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.type() == type
-      retModelProperty.items()
-      def retItem = retModelProperty.items()
-      retItem.type() == null
-      retItem.ref() == itemRef
-      retItem.qualifiedType() == itemQualifiedType
+      asReturn.getName() == "MapsContainer"
+      asReturn.getProperties().containsKey(property)
+      def retModelProperty = asReturn.getProperties().get(property)
+      retModelProperty.getType() == type
+      retModelProperty.getItems()
+      def retItem = retModelProperty.getItems()
+      retItem.getType() == null
+      retItem.getRef() == itemRef
+      retItem.getQualifiedType() == itemQualifiedType
 
     where:
       property              | type   | itemRef                      | itemQualifiedType
@@ -192,25 +192,25 @@ class ContainerTypesSpec extends Specification {
       Model asReturn = provider.dependencies(returnContext).get("MapsContainer")
 
     expect:
-      asInput.name() == "MapsContainer"
-      asInput.properties().containsKey(property)
-      def modelProperty = asInput.properties().get(property)
-      modelProperty.type() == type
-      modelProperty.items()
-      ModelRef item = modelProperty.items()
-      item.type() == null
-      item.ref() == itemRef
-      item.qualifiedType() == itemQualifiedType
+      asInput.getName() == "MapsContainer"
+      asInput.getProperties().containsKey(property)
+      def modelProperty = asInput.getProperties().get(property)
+      modelProperty.getType() == type
+      modelProperty.getItems()
+      ModelRef item = modelProperty.getItems()
+      item.getType() == null
+      item.getRef() == itemRef
+      item.getQualifiedType() == itemQualifiedType
 
-      asReturn.name() == "MapsContainer"
-      asReturn.properties().containsKey(property)
-      def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.type() == type
-      retModelProperty.items()
-      def retItem = retModelProperty.items()
-      retItem.type() == null
-      retItem.ref() == itemRef
-      retItem.qualifiedType() == itemQualifiedType
+      asReturn.getName() == "MapsContainer"
+      asReturn.getProperties().containsKey(property)
+      def retModelProperty = asReturn.getProperties().get(property)
+      retModelProperty.getType() == type
+      retModelProperty.getItems()
+      def retItem = retModelProperty.getItems()
+      retItem.getType() == null
+      retItem.getRef() == itemRef
+      retItem.getQualifiedType() == itemQualifiedType
 
     where:
       property              | type   | itemRef                      | itemQualifiedType

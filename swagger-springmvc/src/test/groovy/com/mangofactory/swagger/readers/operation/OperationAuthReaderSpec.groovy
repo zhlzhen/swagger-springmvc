@@ -23,10 +23,10 @@ class OperationAuthReaderSpec extends Specification {
       then:
       def results = context.get("authorizations")
       Authorization authorization = results[0]
-      authorization.type() == 'oauth2'
-      AuthorizationScope authorizationScope = authorization.scopes()[0]
-      authorizationScope.description() == "scope description"
-      authorizationScope.scope() == "scope"
+      authorization.getType() == 'oauth2'
+      AuthorizationScope authorizationScope = authorization.getScopes()[0]
+      authorizationScope.getDescription() == "scope description"
+      authorizationScope.getScope() == "scope"
    }
 
    def "should apply global auth"(){
@@ -48,10 +48,10 @@ class OperationAuthReaderSpec extends Specification {
       def results = context.get("authorizations")
       println(results)
       Authorization authorization = results[0]
-      authorization.type() == 'oauth2'
-      AuthorizationScope authorizationScope = authorization.scopes()[0]
-      authorizationScope.description() == "accessEverything"
-      authorizationScope.scope() == "global"
+      authorization.getType() == 'oauth2'
+      AuthorizationScope authorizationScope = authorization.getScopes()[0]
+      authorizationScope.getDescription() == "accessEverything"
+      authorizationScope.getScope() == "global"
    }
 
    def "should apply global auth when ApiOperationAnnotation exists without auth values"(){
@@ -73,9 +73,9 @@ class OperationAuthReaderSpec extends Specification {
       def results = context.get("authorizations")
       println(results)
       Authorization authorization = results[0]
-      authorization.type() == 'oauth2'
-      AuthorizationScope authorizationScope = authorization.scopes()[0]
-      authorizationScope.description() == "accessEverything"
-      authorizationScope.scope() == "global"
+      authorization.getType() == 'oauth2'
+      AuthorizationScope authorizationScope = authorization.getScopes()[0]
+      authorizationScope.getDescription() == "accessEverything"
+      authorizationScope.getScope() == "global"
    }
 }

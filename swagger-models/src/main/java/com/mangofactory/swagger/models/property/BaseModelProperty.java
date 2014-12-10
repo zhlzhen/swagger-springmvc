@@ -65,7 +65,7 @@ public abstract class BaseModelProperty implements ModelProperty {
   }
 
   private boolean allowableValuesIsEmpty(Optional<AllowableListValues> listValues) {
-    return !listValues.isPresent() || listValues.get().values().size() == 0;
+    return !listValues.isPresent() || listValues.get().getValues().size() == 0;
   }
 
   @Override

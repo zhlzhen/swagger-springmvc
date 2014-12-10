@@ -26,35 +26,35 @@ public class Model {
     this.subTypes = subTypes;
   }
 
-  public String id() {
+  public String getId() {
     return id;
   }
 
-  public String name() {
+  public String getName() {
     return name;
   }
 
-  public String qualifiedType() {
+  public String getQualifiedType() {
     return qualifiedType;
   }
 
-  public Map<String, ModelProperty> properties() {
+  public Map<String, ModelProperty> getProperties() {
     return properties;
   }
 
-  public String description() {
+  public String getDescription() {
     return description;
   }
 
-  public String baseModel() {
+  public String getBaseModel() {
     return baseModel;
   }
 
-  public String discriminator() {
+  public String getDiscriminator() {
     return discriminator;
   }
 
-  public List<String> subTypes() {
+  public List<String> getSubTypes() {
     return subTypes;
   }
 }

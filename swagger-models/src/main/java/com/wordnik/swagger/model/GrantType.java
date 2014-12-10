@@ -1,16 +1,13 @@
 package com.wordnik.swagger.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class GrantType {
-  @JsonProperty("type")
-  private final String aType;
+  private final String type;
 
-  public GrantType(String aType) {
-    this.aType = aType;
+  public GrantType(String type) {
+    this.type = type;
   }
 
-  public String type() {
-    return aType;
+  public String getType() {
+    return type;
   }
 }

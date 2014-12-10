@@ -17,22 +17,22 @@ class UnwrappedTypeSpec extends Specification {
       Model asReturn = provider.modelFor(ModelContext.returnValue(unwrappedType())).get()
 
     expect:
-      asInput.name() == "UnwrappedType"
-      asInput.properties().size() == 1
-      asInput.properties().containsKey(property)
-      def modelProperty = asInput.properties().get(property)
-      modelProperty.type() == type
-      modelProperty.qualifiedType() == qualifiedType
-      modelProperty.items() == null
+      asInput.getName() == "UnwrappedType"
+      asInput.getProperties().size() == 1
+      asInput.getProperties().containsKey(property)
+      def modelProperty = asInput.getProperties().get(property)
+      modelProperty.getType() == type
+      modelProperty.getQualifiedType() == qualifiedType
+      modelProperty.getItems() == null
       Types.isBaseType(type)
 
-      asReturn.name() == "UnwrappedType"
-      asReturn.properties().size() == 1
-      asReturn.properties().containsKey(property)
-      def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.type() == type
-      retModelProperty.qualifiedType() == qualifiedType
-      retModelProperty.items() == null
+      asReturn.getName() == "UnwrappedType"
+      asReturn.getProperties().size() == 1
+      asReturn.getProperties().containsKey(property)
+      def retModelProperty = asReturn.getProperties().get(property)
+      retModelProperty.getType() == type
+      retModelProperty.getQualifiedType() == qualifiedType
+      retModelProperty.getItems() == null
       Types.isBaseType(type)
 
     where:

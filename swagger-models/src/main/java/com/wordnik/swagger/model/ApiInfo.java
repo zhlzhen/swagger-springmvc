@@ -19,27 +19,27 @@ public class ApiInfo {
     this.licenseUrl = licenseUrl;
   }
 
-  public String title() {
+  public String getTitle() {
     return title;
   }
 
-  public String description() {
+  public String getDescription() {
     return description;
   }
 
-  public String termsOfServiceUrl() {
+  public String getTermsOfServiceUrl() {
     return termsOfServiceUrl;
   }
 
-  public String contact() {
+  public String getContact() {
     return contact;
   }
 
-  public String license() {
+  public String getLicense() {
     return license;
   }
 
-  public String licenseUrl() {
+  public String getLicenseUrl() {
     return licenseUrl;
   }
 }

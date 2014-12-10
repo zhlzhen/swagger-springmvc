@@ -1,12 +1,9 @@
 package com.wordnik.swagger.model;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-//@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.WRAPPER_OBJECT, property = "@class")
 public class OAuth extends AuthorizationType {
 
   private final List<AuthorizationScope> scopes;
@@ -23,7 +20,7 @@ public class OAuth extends AuthorizationType {
     if (null != gTypes) {
       LinkedHashMap<String, GrantType> map = new LinkedHashMap<String, GrantType>();
       for (GrantType grantType : gTypes) {
-        map.put(grantType.type(), grantType);
+        map.put(grantType.getType(), grantType);
       }
       return map;
     }
@@ -32,14 +29,14 @@ public class OAuth extends AuthorizationType {
 
   @Override
   public String getName() {
-    return super.aType;
+    return super.type;
   }
 
-  public List<AuthorizationScope> scopes() {
+  public List<AuthorizationScope> getScopes() {
     return scopes;
   }
 
-  public List<GrantType> grantTypes() {
+  public List<GrantType> getGrantTypes() {
     return new ArrayList<GrantType>(grantTypes.values());
   }
 }

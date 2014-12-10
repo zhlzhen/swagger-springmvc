@@ -28,8 +28,8 @@ class ParameterAllowableReaderSpec extends Specification {
       AllowableListValues allowableValues = context.get('allowableValues')
     then:
 
-      allowableValues.valueType() == "LIST"
-      allowableValues.values() == ["PRODUCT", "SERVICE"]
+      allowableValues.getValueType() == "LIST"
+      allowableValues.getValues() == ["PRODUCT", "SERVICE"]
     where:
       handler                                                                          | expected
       dummyHandlerMethod('methodWithSingleEnum', DummyClass.BusinessType.class)        | AllowableListValues
@@ -50,8 +50,8 @@ class ParameterAllowableReaderSpec extends Specification {
       operationCommand.execute(context)
       AllowableListValues allowableValues = context.get('allowableValues')
     then:
-      allowableValues.valueType() == "LIST"
-      allowableValues.values() == expected
+      allowableValues.getValueType() == "LIST"
+      allowableValues.getValues() == expected
     where:
       apiParamAnnotation                                | expected
       [allowableValues: { -> "1, 2" }] as ApiParam      | ['1', '2']
@@ -74,8 +74,8 @@ class ParameterAllowableReaderSpec extends Specification {
       operationCommand.execute(context)
       AllowableRangeValues allowableValues = context.get('allowableValues')
     then:
-      allowableValues.min() == min as String
-      allowableValues.max() == max as String
+      allowableValues.getMin() == min as String
+      allowableValues.getMax() == max as String
     where:
       apiParamAnnotation                                                         | min | max
       [allowableValues: { -> "range[1,5]" }] as ApiParam                         | 1   | 5

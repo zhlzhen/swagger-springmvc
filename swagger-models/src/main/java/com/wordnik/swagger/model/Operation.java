@@ -38,55 +38,55 @@ public class Operation {
     this.deprecated = deprecated;
   }
 
-  public String method() {
+  public String getMethod() {
     return method;
   }
 
-  public String summary() {
+  public String getSummary() {
     return summary;
   }
 
-  public String notes() {
+  public String getNotes() {
     return notes;
   }
 
-  public String responseClass() {
+  public String getResponseClass() {
     return responseClass;
   }
 
-  public String nickname() {
+  public String getNickname() {
     return nickname;
   }
 
-  public int position() {
+  public int getPosition() {
     return position;
   }
 
-  public List<String> produces() {
+  public List<String> getProduces() {
     return produces;
   }
 
-  public List<String> consumes() {
+  public List<String> getConsumes() {
     return consumes;
   }
 
-  public List<String> protocol() {
+  public List<String> getProtocol() {
     return protocol;
   }
 
-  public List<Authorization> authorizations() {
+  public List<Authorization> getAuthorizations() {
     return authorizations;
   }
 
-  public List<Parameter> parameters() {
+  public List<Parameter> getParameters() {
     return parameters;
   }
 
-  public List<ResponseMessage> responseMessages() {
+  public List<ResponseMessage> getResponseMessages() {
     return responseMessages;
   }
 
-  public String deprecated() {
+  public String getDeprecated() {
     return deprecated;
   }
 }

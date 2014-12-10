@@ -11,11 +11,11 @@ public class ImplicitGrant extends GrantType {
     this.tokenName = tokenName;
   }
 
-  public LoginEndpoint loginEndpoint() {
+  public LoginEndpoint getLoginEndpoint() {
     return loginEndpoint;
   }
 
-  public String tokenName() {
+  public String getTokenName() {
     return tokenName;
   }
 }

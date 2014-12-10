@@ -10,6 +10,6 @@ import com.wordnik.swagger.model.ApiListingReference;
 public class ResourceListingPositionalOrdering extends Ordering<ApiListingReference> {
   @Override
   public int compare(ApiListingReference first, ApiListingReference second) {
-    return Ints.compare(first.position(), second.position());
+    return Ints.compare(first.getPosition(), second.getPosition());
   }
 }

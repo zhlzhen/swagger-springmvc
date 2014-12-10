@@ -48,7 +48,7 @@ public class DefaultResponseMessageReader extends SwaggerResponseMessageReader {
     return new Comparator<ResponseMessage>() {
       @Override
       public int compare(ResponseMessage first, ResponseMessage second) {
-        return Ints.compare(first.code(), second.code());
+        return Ints.compare(first.getCode(), second.getCode());
       }
     };
   }
@@ -62,7 +62,7 @@ public class DefaultResponseMessageReader extends SwaggerResponseMessageReader {
     ResponseMessage responseMessage = byStatusCode.get(httpStatusCode);
     String message = null;
     if (responseMessage != null) {
-      message = coalese(responseMessage.message(), HttpStatus.OK.getReasonPhrase());
+      message = coalese(responseMessage.getMessage(), HttpStatus.OK.getReasonPhrase());
     }
     ResponseMessage responseWithModel;
     String simpleName = null;
@@ -95,12 +95,12 @@ public class DefaultResponseMessageReader extends SwaggerResponseMessageReader {
           byStatusCode.put(apiResponse.code(),
                   new ResponseMessage(apiResponse.code(), apiResponse.message(), overrideTypeName));
         } else {
-          String responseModel = responseMessage.responseModel();
+          String responseModel = responseMessage.getResponseModel();
           if (!isNullOrEmpty(overrideTypeName)) {
             responseModel = overrideTypeName;
           }
           byStatusCode.put(apiResponse.code(),
-                  new ResponseMessage(apiResponse.code(), coalese(apiResponse.message(), responseMessage.message()),
+                  new ResponseMessage(apiResponse.code(), coalese(apiResponse.message(), responseMessage.getMessage()),
                           responseModel));
         }
       }
@@ -125,7 +125,7 @@ public class DefaultResponseMessageReader extends SwaggerResponseMessageReader {
     return new Function<ResponseMessage, Integer>() {
       @Override
       public Integer apply(ResponseMessage input) {
-        return input.code();
+        return input.getCode();
       }
     };
   }

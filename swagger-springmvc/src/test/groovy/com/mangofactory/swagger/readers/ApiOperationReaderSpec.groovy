@@ -51,12 +51,12 @@ class ApiOperationReaderSpec extends Specification {
 
     then:
       Operation apiOperation = result['operations'][0]
-      apiOperation.method() == PATCH.toString()
-      apiOperation.summary() == handlerMethod.method.name
-      apiOperation.notes() == handlerMethod.method.name
-      apiOperation.nickname() == handlerMethod.method.name
-      apiOperation.position() == 0
-      apiOperation.authorizations().size() == 1
+      apiOperation.getMethod() == PATCH.toString()
+      apiOperation.getSummary() == handlerMethod.method.name
+      apiOperation.getNotes() == handlerMethod.method.name
+      apiOperation.getNickname() == handlerMethod.method.name
+      apiOperation.getPosition() == 0
+      apiOperation.getAuthorizations().size() == 1
 
       def secondApiOperation = result['operations'][1]
       secondApiOperation.position == 1

@@ -85,10 +85,10 @@ public class SwaggerApiResourceListing {
 
     log.info("Added a resource listing with ({}) api resources: ", apiListingReferences.size());
     for (ApiListingReference apiListingReference : apiListingReferences) {
-      String path = apiListingReference.description();
+      String path = apiListingReference.getDescription();
       String prefix = (path != null && path.startsWith("http")) ? path : DefaultSwaggerController
               .DOCUMENTATION_BASE_PATH;
-      log.info("  {} at location: {}{}", path, prefix, apiListingReference.path());
+      log.info("  {} at location: {}{}", path, prefix, apiListingReference.getPath());
     }
 
     swaggerCache.addSwaggerResourceListing(swaggerGroup, resourceListing);

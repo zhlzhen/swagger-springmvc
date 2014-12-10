@@ -67,11 +67,11 @@ public class ApiModelReader implements Command<RequestMappingContext> {
               swaggerGlobalSettings.getIgnorableParameterTypes(),
               modelContext);
       Optional<Model> model = modelProvider.modelFor(modelContext);
-      if (model.isPresent() && !"void".equals(model.get().name())) {
+      if (model.isPresent() && !"void".equals(model.get().getName())) {
         log.debug("Swagger generated parameter model id: {}, name: {}, schema: {} models",
-                model.get().id(),
-                model.get().name());
-        modelMap.put(model.get().id(), model.get());
+                model.get().getId(),
+                model.get().getName());
+        modelMap.put(model.get().getId(), model.get());
       } else {
         log.debug("Swagger core did not find any models");
       }
@@ -104,9 +104,9 @@ public class ApiModelReader implements Command<RequestMappingContext> {
             Optional<Model> pModel = modelProvider.modelFor(modelContext);
             if (pModel.isPresent()) {
               log.debug("Swagger generated parameter model id: {}, name: {}, schema: {} models",
-                      pModel.get().id(),
-                      pModel.get().name());
-              modelMap.put(pModel.get().id(), pModel.get());
+                      pModel.get().getId(),
+                      pModel.get().getName());
+              modelMap.put(pModel.get().getId(), pModel.get());
             } else {
               log.debug("Swagger core did not find any parameter models for {}", response.response());
             }
@@ -132,8 +132,8 @@ public class ApiModelReader implements Command<RequestMappingContext> {
         Model targetModelValue = target.get(sourceModelKey);
         Model sourceModelValue = sModelEntry.getValue();
 
-        Map<String, ModelProperty> targetProperties = targetModelValue.properties();
-        Map<String, ModelProperty> sourceProperties = sourceModelValue.properties();
+        Map<String, ModelProperty> targetProperties = targetModelValue.getProperties();
+        Map<String, ModelProperty> sourceProperties = sourceModelValue.getProperties();
 
         Set<String> newSourcePropKeys = newHashSet(sourceProperties.keySet());
         newSourcePropKeys.removeAll(targetProperties.keySet());
@@ -144,14 +144,14 @@ public class ApiModelReader implements Command<RequestMappingContext> {
 
         // uses scala generated copy constructor.
         Model mergedModel = new Model(
-                targetModelValue.id(),
-                targetModelValue.name(),
-                targetModelValue.qualifiedType(),
+                targetModelValue.getId(),
+                targetModelValue.getName(),
+                targetModelValue.getQualifiedType(),
                 mergedTargetProperties,
-                targetModelValue.description(),
-                targetModelValue.baseModel(),
-                targetModelValue.discriminator(),
-                targetModelValue.subTypes());
+                targetModelValue.getDescription(),
+                targetModelValue.getBaseModel(),
+                targetModelValue.getDiscriminator(),
+                targetModelValue.getSubTypes());
 
         target.put(sourceModelKey, mergedModel);
       }
@@ -193,9 +193,9 @@ public class ApiModelReader implements Command<RequestMappingContext> {
             Optional<Model> pModel = modelProvider.modelFor(modelContext);
             if (pModel.isPresent()) {
               log.debug("Swagger generated parameter model id: {}, name: {}, schema: {} models",
-                      pModel.get().id(),
-                      pModel.get().name());
-              modelMap.put(pModel.get().id(), pModel.get());
+                      pModel.get().getId(),
+                      pModel.get().getName());
+              modelMap.put(pModel.get().getId(), pModel.get());
             } else {
               log.debug("Swagger core did not find any parameter models for {}",
                       pType.getResolvedParameterType());

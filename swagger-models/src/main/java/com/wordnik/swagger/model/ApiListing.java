@@ -34,51 +34,51 @@ public class ApiListing {
     this.position = position;
   }
 
-  public String apiVersion() {
+  public String getApiVersion() {
     return apiVersion;
   }
 
-  public String swaggerVersion() {
+  public String getSwaggerVersion() {
     return swaggerVersion;
   }
 
-  public String basePath() {
+  public String getBasePath() {
     return basePath;
   }
 
-  public String resourcePath() {
+  public String getResourcePath() {
     return resourcePath;
   }
 
-  public List<String> produces() {
+  public List<String> getProduces() {
     return produces;
   }
 
-  public List<String> consumes() {
+  public List<String> getConsumes() {
     return consumes;
   }
 
-  public List<String> protocol() {
+  public List<String> getProtocol() {
     return protocol;
   }
 
-  public List<Authorization> authorizations() {
+  public List<Authorization> getAuthorizations() {
     return authorizations;
   }
 
-  public List<ApiDescription> apis() {
+  public List<ApiDescription> getApis() {
     return apis;
   }
 
-  public Map<String, Model> models() {
+  public Map<String, Model> getModels() {
     return models;
   }
 
-  public String description() {
+  public String getDescription() {
     return description;
   }
 
-  public int position() {
+  public int getPosition() {
     return position;
   }
 }

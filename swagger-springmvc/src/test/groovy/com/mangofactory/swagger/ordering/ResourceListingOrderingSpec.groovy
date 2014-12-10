@@ -14,8 +14,8 @@ class ResourceListingOrderingSpec extends Specification {
     when:
       Collections.sort(list, ordering)
     then:
-      list[0].description() == expectedFirst
-      list[1].description() == expectedSecond
+      list[0].getDescription() == expectedFirst
+      list[1].getDescription() == expectedSecond
 
     where:
       list                                                  | expectedFirst | expectedSecond
@@ -30,8 +30,8 @@ class ResourceListingOrderingSpec extends Specification {
     when:
       Collections.sort(list, ordering)
     then:
-      list[0].description() == expectedFirst
-      list[1].description() == expectedSecond
+      list[0].getDescription() == expectedFirst
+      list[1].getDescription() == expectedSecond
 
     where:
       list                                                  | expectedFirst | expectedSecond

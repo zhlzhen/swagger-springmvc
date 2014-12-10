@@ -80,8 +80,8 @@ class DefaultResponseMessageReaderSpec extends Specification {
       Map<String, Object> result = context.getResult()
       ResponseMessage responseMessage =  result['responseMessages'].find{ it.code == 200 }
     then:
-      responseMessage.code() == 200
-      responseMessage.responseModel() == 'BusinessModel'
-      responseMessage.message() == "OK"
+      responseMessage.getCode() == 200
+      responseMessage.getResponseModel() == 'BusinessModel'
+      responseMessage.getMessage() == "OK"
    }
 }

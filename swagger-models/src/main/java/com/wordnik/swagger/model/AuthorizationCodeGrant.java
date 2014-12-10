@@ -11,11 +11,11 @@ public class AuthorizationCodeGrant extends GrantType {
     this.tokenEndpoint = tokenEndpoint;
   }
 
-  public TokenRequestEndpoint tokenRequestEndpoint() {
+  public TokenRequestEndpoint getTokenRequestEndpoint() {
     return tokenRequestEndpoint;
   }
 
-  public TokenEndpoint tokenEndpoint() {
+  public TokenEndpoint getTokenEndpoint() {
     return tokenEndpoint;
   }
 }

@@ -76,7 +76,7 @@ public class DefaultModelProvider implements ModelProvider {
     for (ResolvedType resolvedType : dependencyProvider.dependentModels(modelContext)) {
       Optional<Model> model = modelFor(ModelContext.fromParent(modelContext, resolvedType));
       if (model.isPresent()) {
-        models.put(model.get().name(), model.get());
+        models.put(model.get().getName(), model.get());
       }
     }
     return models;

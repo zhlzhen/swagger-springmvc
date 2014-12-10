@@ -45,11 +45,11 @@ class ApiDescriptionReaderSpec extends Specification {
         ApiDescription apiDescription = descriptionList[0]
         ApiDescription secondApiDescription = descriptionList[1]
 
-        apiDescription.path() == prefix + '/somePath/{businessId}'
-        apiDescription.description() == dummyHandlerMethod().method.name
+        apiDescription.getPath() == prefix + '/somePath/{businessId}'
+        apiDescription.getDescription() == dummyHandlerMethod().method.name
 
-        secondApiDescription.path() == prefix + '/somePath/{businessId}'
-        secondApiDescription.description() == dummyHandlerMethod().method.name
+        secondApiDescription.getPath() == prefix + '/somePath/{businessId}'
+        secondApiDescription.getDescription() == dummyHandlerMethod().method.name
 
       where:
         pathProvider                  | prefix

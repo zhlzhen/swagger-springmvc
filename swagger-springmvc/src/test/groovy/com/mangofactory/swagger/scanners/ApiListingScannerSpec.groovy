@@ -53,17 +53,17 @@ class ApiListingScannerSpec extends Specification {
       apiListingMap.size() == 1
 
       ApiListing listing = apiListingMap['businesses']
-      listing.swaggerVersion() == "1.2"
-      listing.apiVersion() == "1.0"
-      listing.basePath() == "http://localhost:8080/context-path"
-      listing.resourcePath() == "/api/v1/businesses"
-      listing.position() == 0
-      listing.consumes() == [APPLICATION_JSON_VALUE, APPLICATION_XML_VALUE]
-      listing.produces() == [APPLICATION_JSON_VALUE]
-      ApiDescription apiDescription = listing.apis()[0]
-      apiDescription.path() == '/api/v1/businesses'
-      apiDescription.description() == "methodWithConcreteResponseBody"
-      def models = apiDescription.operations().head()
+      listing.getSwaggerVersion() == "1.2"
+      listing.getApiVersion() == "1.0"
+      listing.getBasePath() == "http://localhost:8080/context-path"
+      listing.getResourcePath() == "/api/v1/businesses"
+      listing.getPosition() == 0
+      listing.getConsumes() == [APPLICATION_JSON_VALUE, APPLICATION_XML_VALUE]
+      listing.getProduces() == [APPLICATION_JSON_VALUE]
+      ApiDescription apiDescription = listing.getApis()[0]
+      apiDescription.getPath() == '/api/v1/businesses'
+      apiDescription.getDescription() == "methodWithConcreteResponseBody"
+      def models = apiDescription.getOperations().head()
 
   }
 
@@ -95,7 +95,7 @@ class ApiListingScannerSpec extends Specification {
 
     then:
       ApiListing listing = apiListingMap['businesses']
-      listing.authorizations().size() == 1
+      listing.getAuthorizations().size() == 1
   }
 
   @Unroll

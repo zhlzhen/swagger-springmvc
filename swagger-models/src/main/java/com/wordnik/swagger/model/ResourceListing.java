@@ -24,30 +24,30 @@ public class ResourceListing {
     if (null != authorizationTypes) {
       LinkedHashMap<String, AuthorizationType> map = new LinkedHashMap<String, AuthorizationType>();
       for (AuthorizationType authorizationType : authorizationTypes) {
-        map.put(authorizationType.type(), authorizationType);
+        map.put(authorizationType.getType(), authorizationType);
       }
       return map;
     }
     return null;
   }
 
-  public String apiVersion() {
+  public String getApiVersion() {
     return apiVersion;
   }
 
-  public String swaggerVersion() {
+  public String getSwaggerVersion() {
     return swaggerVersion;
   }
 
-  public List<ApiListingReference> apis() {
+  public List<ApiListingReference> getApis() {
     return apis;
   }
 
-  public List<AuthorizationType> authorizations() {
+  public List<AuthorizationType> getAuthorizations() {
     return new ArrayList<AuthorizationType>(authorizations.values());
   }
 
-  public ApiInfo info() {
+  public ApiInfo getInfo() {
     return info;
   }
 }

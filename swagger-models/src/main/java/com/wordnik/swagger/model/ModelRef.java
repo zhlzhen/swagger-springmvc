@@ -1,29 +1,26 @@
 package com.wordnik.swagger.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class ModelRef {
 
-  @JsonProperty("type")
-  private final String aTtype;
+  private final String type;
   private final String ref;
   private final String qualifiedType;
 
-  public ModelRef(String aTtype, String ref, String qualifiedType) {
-    this.aTtype = aTtype;
+  public ModelRef(String type, String ref, String qualifiedType) {
+    this.type = type;
     this.ref = ref;
     this.qualifiedType = qualifiedType;
   }
 
-  public String type() {
-    return aTtype;
+  public String getType() {
+    return type;
   }
 
-  public String ref() {
+  public String getRef() {
     return ref;
   }
 
-  public String qualifiedType() {
+  public String getQualifiedType() {
     return qualifiedType;
   }
 }

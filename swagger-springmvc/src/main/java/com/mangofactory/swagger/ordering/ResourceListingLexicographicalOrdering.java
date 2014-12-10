@@ -9,6 +9,6 @@ import com.wordnik.swagger.model.ApiListingReference;
 public class ResourceListingLexicographicalOrdering extends Ordering<ApiListingReference> {
   @Override
   public int compare(ApiListingReference first, ApiListingReference second) {
-    return first.path().compareTo(second.path());
+    return first.getPath().compareTo(second.getPath());
   }
 }

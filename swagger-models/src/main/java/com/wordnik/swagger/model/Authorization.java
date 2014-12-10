@@ -3,20 +3,19 @@ package com.wordnik.swagger.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Authorization {
-  @JsonProperty("type")
-  private final String aType;
+  private final String type;
   private final AuthorizationScope[] scopes;
 
-  public Authorization(String aType, AuthorizationScope[] scopes) {
+  public Authorization(String type, AuthorizationScope[] scopes) {
     this.scopes = scopes;
-    this.aType = aType;
+    this.type = type;
   }
 
-  public String type() {
-    return aType;
+  public String getType() {
+    return type;
   }
 
-  public AuthorizationScope[] scopes() {
+  public AuthorizationScope[] getScopes() {
     return scopes;
   }
 }

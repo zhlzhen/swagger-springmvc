@@ -1,10 +1,7 @@
 package com.wordnik.swagger.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class ModelProperty {
-  @JsonProperty("type")
-  private final String aType;
+  private final String type;
   private final String qualifiedType;
   private final int position;
   private final Boolean required;
@@ -12,9 +9,9 @@ public class ModelProperty {
   private final AllowableValues allowableValues;
   private final ModelRef items;
 
-  public ModelProperty(String aType, String qualifiedType, int position, Boolean required, String description,
+  public ModelProperty(String type, String qualifiedType, int position, Boolean required, String description,
                        AllowableValues allowableValues, ModelRef items) {
-    this.aType = aType;
+    this.type = type;
     this.qualifiedType = qualifiedType;
     this.position = position;
     this.required = required;
@@ -23,31 +20,31 @@ public class ModelProperty {
     this.items = items;
   }
 
-  public String type() {
-    return aType;
+  public String getType() {
+    return type;
   }
 
-  public String qualifiedType() {
+  public String getQualifiedType() {
     return qualifiedType;
   }
 
-  public int position() {
+  public int getPosition() {
     return position;
   }
 
-  public Boolean required() {
+  public Boolean getRequired() {
     return required;
   }
 
-  public String description() {
+  public String getDescription() {
     return description;
   }
 
-  public AllowableValues allowableValues() {
+  public AllowableValues getAllowableValues() {
     return allowableValues;
   }
 
-  public ModelRef items() {
+  public ModelRef getItems() {
     return items;
   }
 }

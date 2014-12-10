@@ -14,8 +14,8 @@ class ApiDescriptionLexicographicalOrderingSpec extends Specification {
       println("")
       Collections.sort(list, ordering)
     then:
-      list[0].path() == expectedFirst
-      list[1].path() == expectedSecond
+      list[0].getPath() == expectedFirst
+      list[1].getPath() == expectedSecond
 
     where:
       list << [[new ApiDescription("/b", "", [], false),

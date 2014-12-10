@@ -11,11 +11,11 @@ public class AllowableListValues implements AllowableValues {
     this.valueType = valueType;
   }
 
-  public List<String> values() {
+  public List<String> getValues() {
     return values;
   }
 
-  public String valueType() {
+  public String getValueType() {
     return valueType;
   }
 }

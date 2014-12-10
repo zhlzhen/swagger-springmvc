@@ -47,12 +47,12 @@ class SwaggerSpringMvcPluginSpec extends Specification {
       plugin.includePatterns == [".*?"]
       plugin.authorizationTypes == null
 
-      plugin.apiInfo.title() == 'default Title'
-      plugin.apiInfo.description() == 'Api Description'
-      plugin.apiInfo.termsOfServiceUrl() == 'Api terms of service'
-      plugin.apiInfo.contact() == 'Contact Email'
-      plugin.apiInfo.license() == 'Licence Type'
-      plugin.apiInfo.licenseUrl() == 'License URL'
+      plugin.apiInfo.getTitle() == 'default Title'
+      plugin.apiInfo.getDescription() == 'Api Description'
+      plugin.apiInfo.getTermsOfServiceUrl() == 'Api terms of service'
+      plugin.apiInfo.getContact() == 'Contact Email'
+      plugin.apiInfo.getLicense() == 'Licence Type'
+      plugin.apiInfo.getLicenseUrl() == 'License URL'
 
       plugin.excludeAnnotations == []
       plugin.resourceGroupingStrategy instanceof ClassOrApiAnnotationResourceGrouping
@@ -68,7 +68,7 @@ class SwaggerSpringMvcPluginSpec extends Specification {
 
     then:
       SwaggerGlobalSettings swaggerGlobalSettings = plugin.swaggerGlobalSettings
-      swaggerGlobalSettings.getGlobalResponseMessages()[GET][0].message() == "blah"
+      swaggerGlobalSettings.getGlobalResponseMessages()[GET][0].getMessage() == "blah"
       swaggerGlobalSettings.getGlobalResponseMessages()[GET].size() == 1
 
     and: "defaults are preserved"
@@ -85,7 +85,7 @@ class SwaggerSpringMvcPluginSpec extends Specification {
 
     then:
       SwaggerGlobalSettings swaggerGlobalSettings = plugin.swaggerGlobalSettings
-      swaggerGlobalSettings.getGlobalResponseMessages()[GET][0].message() == "blah"
+      swaggerGlobalSettings.getGlobalResponseMessages()[GET][0].getMessage() == "blah"
       swaggerGlobalSettings.getGlobalResponseMessages()[GET].size() == 1
 
     and: "defaults are preserved"

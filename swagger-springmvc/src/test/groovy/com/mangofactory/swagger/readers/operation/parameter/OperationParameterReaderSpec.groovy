@@ -110,38 +110,38 @@ class OperationParameterReaderSpec extends Specification {
 
       Parameter annotatedFooParam = result['parameters'].find { it.name == "foo" }
       annotatedFooParam != null
-      annotatedFooParam.description() == 'description of foo'
+      annotatedFooParam.getDescription() == 'description of foo'
       annotatedFooParam.required
       annotatedFooParam.allowableValues != null
 
       Parameter annotatedBarParam = result['parameters'].find { it.name == "bar" }
-      annotatedBarParam.description() == 'description of bar'
+      annotatedBarParam.getDescription() == 'description of bar'
       !annotatedBarParam.required
       annotatedBarParam.allowableValues == null
 
       Parameter unannotatedEnumTypeParam = result['parameters'].find { it.name == "enumType" }
-      unannotatedEnumTypeParam.description() == null
+      unannotatedEnumTypeParam.getDescription() == null
       unannotatedEnumTypeParam.allowableValues != null
 
       Parameter annotatedEnumTypeParam = result['parameters'].find { it.name == "annotatedEnumType" }
-      annotatedEnumTypeParam.description() == 'description of annotatedEnumType'
+      annotatedEnumTypeParam.getDescription() == 'description of annotatedEnumType'
       annotatedEnumTypeParam.allowableValues != null
 
       Parameter unannotatedNestedTypeNameParam = result['parameters'].find { it.name == "nestedType.name" }
       unannotatedNestedTypeNameParam != null
-      unannotatedNestedTypeNameParam.description() == null
+      unannotatedNestedTypeNameParam.getDescription() == null
 
       Parameter annotatedAllCapsSetParam = result['parameters'].find { it.name == "allCapsSet" }
-      annotatedAllCapsSetParam.description() == 'description of allCapsSet'
+      annotatedAllCapsSetParam.getDescription() == 'description of allCapsSet'
       !annotatedAllCapsSetParam.required
       annotatedAllCapsSetParam.allowableValues == null
 
       Parameter unannotatedParentBeanParam = result['parameters'].find { it.name == "parentBeanProperty" }
-      unannotatedParentBeanParam.description() == null
+      unannotatedParentBeanParam.getDescription() == null
 
       Parameter localDateTime = result['parameters'].find { it.name == "localDateTime" }
       localDateTime.required
-      localDateTime.description() == 'local date time desc dd-MM-yyyy hh:mm:ss'
+      localDateTime.getDescription() == 'local date time desc dd-MM-yyyy hh:mm:ss'
   }
 
   def "Should expand ModelAttribute request param if param has treeish field"() {

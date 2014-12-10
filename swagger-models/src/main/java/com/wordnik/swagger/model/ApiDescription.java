@@ -18,19 +18,19 @@ public class ApiDescription {
     this.hidden = hidden;
   }
 
-  public String path() {
+  public String getPath() {
     return path;
   }
 
-  public String description() {
+  public String getDescription() {
     return description;
   }
 
-  public List<Operation> operations() {
+  public List<Operation> getOperations() {
     return operations;
   }
 
-  public Boolean hidden() {
+  public Boolean isHidden() {
     return hidden;
   }
 }

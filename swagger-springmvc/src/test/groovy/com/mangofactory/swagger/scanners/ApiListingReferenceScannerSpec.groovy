@@ -93,7 +93,7 @@ class ApiListingReferenceScannerSpec extends Specification {
     then:
       apiListingReferences.size == 1
       ApiListingReference businessListingReference = apiListingReferences[0]
-      businessListingReference.path() ==
+      businessListingReference.getPath() ==
               'http://localhost:8080/context-path/api-docs/someGroup/dummy-class'
   }
 
@@ -126,8 +126,8 @@ class ApiListingReferenceScannerSpec extends Specification {
 
       List<ApiListingReference> apiListingReferences = apiListingReferenceScanner.scan()
       apiListingReferences.size() == 2
-      apiListingReferences.find({ it.description() == 'Dummy Class' })
-      apiListingReferences.find({ it.description() == 'Group name' })
+      apiListingReferences.find({ it.getDescription() == 'Dummy Class' })
+      apiListingReferences.find({ it.getDescription() == 'Group name' })
 
     and:
       apiListingReferenceScanner.resourceGroupRequestMappings.size() == 2
@@ -159,6 +159,6 @@ class ApiListingReferenceScannerSpec extends Specification {
 
     then: "api-docs should not appear in the path"
       ApiListingReference apiListingReference = apiListingReferences[0]
-      apiListingReference.path() == "/swaggerGroup/group-name"
+      apiListingReference.getPath() == "/swaggerGroup/group-name"
   }
 }

@@ -18,19 +18,19 @@ class GenericTypeSpec extends Specification {
       Model asReturn = provider.modelFor(returnValue(modelType)).get()
 
     expect:
-      asInput.name() == expectedModelName(modelNamePart)
-      asInput.properties().containsKey("genericField")
-      def modelProperty = asInput.properties().get("genericField")
-      modelProperty.type() == propertyType
-      modelProperty.qualifiedType() == qualifiedType
-      (modelProperty.items() == null) == (!"List".equals(propertyType) && !"Array".equals(propertyType))
+      asInput.getName() == expectedModelName(modelNamePart)
+      asInput.getProperties().containsKey("genericField")
+      def modelProperty = asInput.getProperties().get("genericField")
+      modelProperty.getType() == propertyType
+      modelProperty.getQualifiedType() == qualifiedType
+      (modelProperty.getItems() == null) == (!"List".equals(propertyType) && !"Array".equals(propertyType))
 
-      asReturn.name() == expectedModelName(modelNamePart)
-      asReturn.properties().containsKey("genericField")
-      def retModelProperty = asReturn.properties().get("genericField")
-      retModelProperty.type() == propertyType
-      retModelProperty.qualifiedType() == qualifiedType
-      (retModelProperty.items() == null) == (!"List".equals(propertyType) && !"Array".equals(propertyType))
+      asReturn.getName() == expectedModelName(modelNamePart)
+      asReturn.getProperties().containsKey("genericField")
+      def retModelProperty = asReturn.getProperties().get("genericField")
+      retModelProperty.getType() == propertyType
+      retModelProperty.getQualifiedType() == qualifiedType
+      (retModelProperty.getItems() == null) == (!"List".equals(propertyType) && !"Array".equals(propertyType))
 
     where:
       modelType                       | propertyType                       | modelNamePart                      | qualifiedType
@@ -52,14 +52,14 @@ class GenericTypeSpec extends Specification {
       Model asReturn = provider.modelFor(returnValue(modelType)).get()
 
     expect:
-      asInput.properties().containsKey("strings")
-      def modelProperty = asInput.properties().get("strings")
-      modelProperty.type() == propertyType
+      asInput.getProperties().containsKey("strings")
+      def modelProperty = asInput.getProperties().get("strings")
+      modelProperty.getType() == propertyType
 //    modelProperty.qualifiedType() == qualifiedType DK TODO: Fix this
 
-      asReturn.properties().containsKey("strings")
-      def retModelProperty = asReturn.properties().get("strings")
-      retModelProperty.type() == propertyType
+      asReturn.getProperties().containsKey("strings")
+      def retModelProperty = asReturn.getProperties().get("strings")
+      retModelProperty.getType() == propertyType
 //    retModelProperty.qualifiedType() ==qualifiedType DK TODO: Fix this
 
     where:

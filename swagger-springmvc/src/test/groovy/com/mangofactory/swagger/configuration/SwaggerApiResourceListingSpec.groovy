@@ -54,13 +54,13 @@ class SwaggerApiResourceListingSpec extends Specification {
 
     then: "I should should have the correct defaults"
       ResourceListing resourceListing = swaggerCache.getResourceListing("default")
-      def apiListingReferenceList = resourceListing.apis()
-      def authorizationTypes = resourceListing.authorizations()
+      def apiListingReferenceList = resourceListing.getApis()
+      def authorizationTypes = resourceListing.getAuthorizations()
 
-      resourceListing.apiVersion() == "1"
-      resourceListing.swaggerVersion() == "1.2"
+      resourceListing.getApiVersion() == "1"
+      resourceListing.getSwaggerVersion() == "1.2"
 
-      resourceListing.info() == null
+      resourceListing.getInfo() == null
       apiListingReferenceList == []
       authorizationTypes == []
   }
@@ -75,12 +75,12 @@ class SwaggerApiResourceListingSpec extends Specification {
       swaggerApiResourceListing.initialize()
 
     then:
-      swaggerApiResourceListing.apiInfo.title() == "title"
-      swaggerApiResourceListing.apiInfo.description() == "description"
-      swaggerApiResourceListing.apiInfo.termsOfServiceUrl() == "terms"
-      swaggerApiResourceListing.apiInfo.contact() == "contact"
-      swaggerApiResourceListing.apiInfo.license() == "license"
-      swaggerApiResourceListing.apiInfo.licenseUrl() == "licenseUrl"
+      swaggerApiResourceListing.apiInfo.getTitle() == "title"
+      swaggerApiResourceListing.apiInfo.getDescription() == "description"
+      swaggerApiResourceListing.apiInfo.getTermsOfServiceUrl() == "terms"
+      swaggerApiResourceListing.apiInfo.getContact() == "contact"
+      swaggerApiResourceListing.apiInfo.getLicense() == "license"
+      swaggerApiResourceListing.apiInfo.getLicenseUrl() == "licenseUrl"
   }
 
   def "resource with authorization types"() {
@@ -94,7 +94,7 @@ class SwaggerApiResourceListingSpec extends Specification {
 
     then:
       ResourceListing resourceListing = swaggerCache.getResourceListing("default")
-      def authorizationTypes = resourceListing.authorizations()
+      def authorizationTypes = resourceListing.getAuthorizations()
       def apiKeyAuthType = authorizationTypes[0]
       apiKeyAuthType instanceof ApiKey
       apiKeyAuthType.keyname == "api_key"
@@ -160,17 +160,17 @@ class SwaggerApiResourceListingSpec extends Specification {
       ResourceListing resourceListing = swaggerCache.getResourceListing("swaggerGroup")
 
     then:
-      ApiListingReference apiListingReference = resourceListing.apis().head()
-      apiListingReference.path() == "http://localhost:8080/context-path/api-docs/swaggerGroup/dummy-class"
-      apiListingReference.position() == 0
-      apiListingReference.description() == "Dummy Class"
+      ApiListingReference apiListingReference = resourceListing.getApis().head()
+      apiListingReference.getPath() == "http://localhost:8080/context-path/api-docs/swaggerGroup/dummy-class"
+      apiListingReference.getPosition() == 0
+      apiListingReference.getDescription() == "Dummy Class"
 
     and:
       ApiListing apiListing =
             swaggerCache.swaggerApiListingMap['swaggerGroup']['dummy-class']
-      apiListing.swaggerVersion() == '1.2'
-      apiListing.basePath() == 'http://localhost:8080/context-path'
-      apiListing.resourcePath() == '/somePath'
+      apiListing.getSwaggerVersion() == '1.2'
+      apiListing.getBasePath() == 'http://localhost:8080/context-path'
+      apiListing.getResourcePath() == '/somePath'
   }
 
   def "Should sort based on position"() {
@@ -189,7 +189,7 @@ class SwaggerApiResourceListingSpec extends Specification {
 
     when:
       swaggerApiResourceListing.initialize()
-      def apis = swaggerCache.getResourceListing('default').apis()
+      def apis = swaggerCache.getResourceListing('default').getApis()
     then:
       apis[0].position == firstPosition
       apis[0].path == firstPath

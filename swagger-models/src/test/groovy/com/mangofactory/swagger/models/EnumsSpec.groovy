@@ -10,7 +10,7 @@ class EnumsSpec extends Specification {
     given:
       def expected = new AllowableListValues(newArrayList("One", "Two"), "LIST")
     expect:
-      expected.values() == Enums.allowableValues(JsonValuedEnum).values()
+      expected.getValues() == Enums.allowableValues(JsonValuedEnum).getValues()
 
   }
 
@@ -18,14 +18,14 @@ class EnumsSpec extends Specification {
     given:
       def expected = new AllowableListValues(newArrayList("ONE", "TWO"), "LIST")
     expect:
-      expected.values() == Enums.allowableValues(ExampleEnum).values()
+      expected.getValues() == Enums.allowableValues(ExampleEnum).getValues()
   }
 
   def "enums work with incorrectly annotated enums"() {
     given:
       def expected = new AllowableListValues(newArrayList("ONE", "TWO"), "LIST")
     expect:
-      expected.values() == Enums.allowableValues(IncorrectlyJsonValuedEnum).values()
+      expected.getValues() == Enums.allowableValues(IncorrectlyJsonValuedEnum).getValues()
   }
 
   def "Enums class in not instantiable"() {

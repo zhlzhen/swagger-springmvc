@@ -10,11 +10,11 @@ public class PrimitiveFormatParameterType implements ParameterType {
     this.format = format;
   }
 
-  public String type() {
+  public String getType() {
     return type;
   }
 
-  public String format() {
+  public String getFormat() {
     return format;
   }
 }

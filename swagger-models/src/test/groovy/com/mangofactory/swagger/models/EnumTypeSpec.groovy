@@ -18,24 +18,24 @@ class EnumTypeSpec extends Specification {
       Model asReturn = provider.modelFor(returnValue(enumType())).get()
 
     expect:
-      asInput.name() == "ExampleWithEnums"
-      asInput.properties().containsKey("exampleEnum")
-      def modelPropertyOption = asInput.properties().get("exampleEnum")
+      asInput.getName() == "ExampleWithEnums"
+      asInput.getProperties().containsKey("exampleEnum")
+      def modelPropertyOption = asInput.getProperties().get("exampleEnum")
       def modelProperty = modelPropertyOption
-      modelProperty.type() == "string"
-      modelProperty.qualifiedType() == "com.mangofactory.swagger.models.ExampleEnum"
-      modelProperty.items() == null
-      Types.isBaseType(modelProperty.type())
-      modelProperty.allowableValues().values() == list
+      modelProperty.getType() == "string"
+      modelProperty.getQualifiedType() == "com.mangofactory.swagger.models.ExampleEnum"
+      modelProperty.getItems() == null
+      Types.isBaseType(modelProperty.getType())
+      modelProperty.getAllowableValues().getValues() == list
 
-      asReturn.name() == "ExampleWithEnums"
-      asReturn.properties().containsKey("exampleEnum")
-      def retModelPropertyOption = asReturn.properties().get("exampleEnum")
+      asReturn.getName() == "ExampleWithEnums"
+      asReturn.getProperties().containsKey("exampleEnum")
+      def retModelPropertyOption = asReturn.getProperties().get("exampleEnum")
       def retModelProperty = retModelPropertyOption
-      retModelProperty.type() == "string"
-      retModelProperty.qualifiedType() == "com.mangofactory.swagger.models.ExampleEnum"
-      retModelProperty.items() == null
-      Types.isBaseType(modelProperty.type())
-      retModelProperty.allowableValues().values() == list
+      retModelProperty.getType() == "string"
+      retModelProperty.getQualifiedType() == "com.mangofactory.swagger.models.ExampleEnum"
+      retModelProperty.getItems() == null
+      Types.isBaseType(modelProperty.getType())
+      retModelProperty.getAllowableValues().getValues() == list
   }
 }

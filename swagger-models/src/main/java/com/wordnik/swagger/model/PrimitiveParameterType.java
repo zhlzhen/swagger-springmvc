@@ -7,7 +7,7 @@ public class PrimitiveParameterType implements ParameterType {
     this.type = type;
   }
 
-  public String type() {
+  public String getType() {
     return type;
   }
 }

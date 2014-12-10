@@ -1,17 +1,14 @@
 package com.wordnik.swagger.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public abstract class AuthorizationType {
-  @JsonProperty("type")
-  protected final String aType;
+  protected final String type;
 
-  protected AuthorizationType(String aType) {
-    this.aType = aType;
+  protected AuthorizationType(String type) {
+    this.type = type;
   }
 
-  public String type() {
-    return aType;
+  public String getType() {
+    return type;
   }
 
   public abstract String getName();

@@ -170,7 +170,7 @@ public class ApiListingScanner {
     return Splitter.on('/')
             .omitEmptyStrings()
             .trimResults()
-            .splitToList(apiDescription.path());
+            .splitToList(apiDescription.getPath());
   }
 
   public SwaggerGlobalSettings getSwaggerGlobalSettings() {

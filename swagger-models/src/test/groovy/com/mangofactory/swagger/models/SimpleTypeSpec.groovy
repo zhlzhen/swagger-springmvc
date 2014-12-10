@@ -14,20 +14,20 @@ class SimpleTypeSpec extends Specification {
       Model asReturn = provider.modelFor(ModelContext.returnValue(simpleType())).get()
 
     expect:
-      asInput.name() == "SimpleType"
-      asInput.properties().containsKey(property)
-      def modelProperty = asInput.properties().get(property)
-      modelProperty.type() == type
-      modelProperty.qualifiedType() == qualifiedType
-      modelProperty.items() == null
+      asInput.getName() == "SimpleType"
+      asInput.getProperties().containsKey(property)
+      def modelProperty = asInput.getProperties().get(property)
+      modelProperty.getType() == type
+      modelProperty.getQualifiedType() == qualifiedType
+      modelProperty.getItems() == null
       Types.isBaseType(type)
 
-      asReturn.name() == "SimpleType"
-      asReturn.properties().containsKey(property)
-      def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.type() == type
-      retModelProperty.qualifiedType() == qualifiedType
-      retModelProperty.items() == null
+      asReturn.getName() == "SimpleType"
+      asReturn.getProperties().containsKey(property)
+      def retModelProperty = asReturn.getProperties().get(property)
+      retModelProperty.getType() == type
+      retModelProperty.getQualifiedType() == qualifiedType
+      retModelProperty.getItems() == null
       Types.isBaseType(type)
 
     where:
@@ -59,16 +59,16 @@ class SimpleTypeSpec extends Specification {
       Model asReturn = provider.modelFor(ModelContext.returnValue(typeWithConstructor())).get()
 
     expect:
-      asInput.name() == "TypeWithConstructor"
-      asInput.properties().containsKey(property)
-      def modelProperty = asInput.properties().get(property)
-      modelProperty.type() == type
-      modelProperty.qualifiedType() == qualifiedType
-      modelProperty.items() == null
+      asInput.getName() == "TypeWithConstructor"
+      asInput.getProperties().containsKey(property)
+      def modelProperty = asInput.getProperties().get(property)
+      modelProperty.getType() == type
+      modelProperty.getQualifiedType() == qualifiedType
+      modelProperty.getItems() == null
       Types.isBaseType(type)
 
-      asReturn.name() == "TypeWithConstructor"
-      !asReturn.properties().containsKey(property)
+      asReturn.getName() == "TypeWithConstructor"
+      !asReturn.getProperties().containsKey(property)
 
     where:
       property              | type      | qualifiedType
@@ -82,20 +82,20 @@ class SimpleTypeSpec extends Specification {
       Model asReturn = provider.modelFor(ModelContext.returnValue(typeWithJsonPropertyAnnotation())).get()
 
     expect:
-      asInput.name() == "TypeWithJsonProperty"
-      asInput.properties().containsKey(property)
-      def modelProperty = asInput.properties().get(property)
-      modelProperty.type() == type
-      modelProperty.qualifiedType() == qualifiedType
-      modelProperty.items() == null
+      asInput.getName() == "TypeWithJsonProperty"
+      asInput.getProperties().containsKey(property)
+      def modelProperty = asInput.getProperties().get(property)
+      modelProperty.getType() == type
+      modelProperty.getQualifiedType() == qualifiedType
+      modelProperty.getItems() == null
       Types.isBaseType(type)
 
-      asReturn.name() == "TypeWithJsonProperty"
-      asReturn.properties().containsKey(property)
-      def retModelProperty = asReturn.properties().get(property)
-      retModelProperty.type() == type
-      retModelProperty.qualifiedType() == qualifiedType
-      retModelProperty.items() == null
+      asReturn.getName() == "TypeWithJsonProperty"
+      asReturn.getProperties().containsKey(property)
+      def retModelProperty = asReturn.getProperties().get(property)
+      retModelProperty.getType() == type
+      retModelProperty.getQualifiedType() == qualifiedType
+      retModelProperty.getItems() == null
       Types.isBaseType(type)
 
     where:

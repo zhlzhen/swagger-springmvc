@@ -33,86 +33,86 @@ public class Parameter {
   }
 
   private ParameterType typeFromDataType() {
-    if (isType("int")) {
+    if (isOfType("int")) {
       return new PrimitiveFormatParameterType("integer", "int32");
     }
-    if (isType("long")) {
+    if (isOfType("long")) {
       return new PrimitiveFormatParameterType("integer", "int64");
     }
-    if (isType("float")) {
+    if (isOfType("float")) {
       return new PrimitiveFormatParameterType("integer", "int64");
     }
-    if (isType("double")) {
+    if (isOfType("double")) {
       return new PrimitiveFormatParameterType("number", "double");
     }
-    if (isType("string")) {
+    if (isOfType("string")) {
       return new PrimitiveParameterType("string");
     }
-    if (isType("byte")) {
+    if (isOfType("byte")) {
       return new PrimitiveFormatParameterType("string", "byte");
     }
-    if (isType("boolean")) {
+    if (isOfType("boolean")) {
       return new PrimitiveParameterType("boolean");
     }
-    if (isType("Date") || isType("DateTime")) {
+    if (isOfType("Date") || isOfType("DateTime")) {
       return new PrimitiveFormatParameterType("string", "date-time");
     }
-    if (isType("BigDecimal") || isType("BigInteger")) {
+    if (isOfType("BigDecimal") || isOfType("BigInteger")) {
       return new PrimitiveParameterType("number");
     }
-    if (isType("UUID")) {
+    if (isOfType("UUID")) {
       return new PrimitiveFormatParameterType("string", "uuid");
     }
-    if (isType("date")) {
+    if (isOfType("date")) {
       return new PrimitiveFormatParameterType("string", "date");
     }
-    if (isType("date-time")) {
+    if (isOfType("date-time")) {
       return new PrimitiveFormatParameterType("string", "date-time");
     }
     return new PrimitiveParameterType(dataType);
   }
 
-  private boolean isType(String ofType) {
+  private boolean isOfType(String ofType) {
     return dataType.equals(ofType);
   }
 
-  public String name() {
+  public String getName() {
     return name;
   }
 
-  public String description() {
+  public String getDescription() {
     return description;
   }
 
-  public String defaultValue() {
+  public String getDefaultValue() {
     return defaultValue;
   }
 
-  public Boolean required() {
+  public Boolean isRequired() {
     return required;
   }
 
-  public Boolean allowMultiple() {
+  public Boolean isAllowMultiple() {
     return allowMultiple;
   }
 
-  public String dataType() {
+  public String getDataType() {
     return dataType;
   }
 
-  public AllowableValues allowableValues() {
+  public AllowableValues getAllowableValues() {
     return allowableValues;
   }
 
-  public String paramType() {
+  public String getParamType() {
     return paramType;
   }
 
-  public String paramAccess() {
+  public String getParamAccess() {
     return paramAccess;
   }
 
-  public ParameterType parameterType() {
+  public ParameterType getParameterType() {
     return parameterType;
   }
 }

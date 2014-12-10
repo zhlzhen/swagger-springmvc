@@ -51,7 +51,7 @@ public class OperationParameterRequestConditionReader implements RequestMappingR
     return new Predicate<Parameter>() {
       @Override
       public boolean apply(Parameter input) {
-        return Objects.equal(input.name(), name);
+        return Objects.equal(input.getName(), name);
       }
     };
   }

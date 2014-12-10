@@ -7,6 +7,6 @@ public class BasicAuth extends AuthorizationType {
 
   @Override
   public String getName() {
-    return super.aType;
+    return super.type;
   }
 }

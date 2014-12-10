@@ -9,11 +9,11 @@ public class AuthorizationScope {
     this.scope = scope;
   }
 
-  public String scope() {
+  public String getScope() {
     return scope;
   }
 
-  public String description() {
+  public String getDescription() {
     return description;
   }
 }

@@ -69,8 +69,8 @@ class BeanModelPropertySpec extends Specification {
       sut.qualifiedTypeName() == qualifiedTypeName
 
       if (sut.allowableValues()) {
-        sut.allowableValues().values() == allowableValues.values()
-        sut.allowableValues().valueType() == allowableValues.valueType()
+        sut.allowableValues().getValues() == allowableValues.getValues()
+        sut.allowableValues().getValueType() == allowableValues.getValueType()
       }
     
     where:

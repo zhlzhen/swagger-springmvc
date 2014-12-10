@@ -21,11 +21,11 @@ public class ApiKey extends AuthorizationType {
     return keyname;
   }
 
-  public String keyname() {
+  public String getKeyname() {
     return keyname;
   }
 
-  public String passAs() {
+  public String getPassAs() {
     return passAs;
   }
 }

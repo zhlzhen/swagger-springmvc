@@ -11,15 +11,15 @@ public class ApiListingReference {
     this.position = position;
   }
 
-  public String path() {
+  public String getPath() {
     return path;
   }
 
-  public String description() {
+  public String getDescription() {
     return description;
   }
 
-  public int position() {
+  public int getPosition() {
     return position;
   }
 }

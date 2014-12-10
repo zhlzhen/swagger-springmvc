@@ -11,15 +11,15 @@ public class ResponseMessage {
     this.responseModel = responseModel;
   }
 
-  public int code() {
+  public int getCode() {
     return code;
   }
 
-  public String message() {
+  public String getMessage() {
     return message;
   }
 
-  public String responseModel() {
+  public String getResponseModel() {
     return responseModel;
   }
 }

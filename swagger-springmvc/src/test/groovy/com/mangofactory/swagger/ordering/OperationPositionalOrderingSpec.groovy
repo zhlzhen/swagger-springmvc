@@ -15,8 +15,8 @@ class OperationPositionalOrderingSpec extends Specification {
       println("")
       Collections.sort(list, ordering)
     then:
-      list[0].method() == expectedFirst
-      list[1].method() == expectedSecond
+      list[0].getMethod() == expectedFirst
+      list[1].getMethod() == expectedSecond
 
     where:
       list                                                  | expectedFirst | expectedSecond
