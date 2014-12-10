@@ -1,6 +1,6 @@
 package com.mangofactory.swagger.mixins
 
-import com.wordnik.swagger.model.Operation
+import com.mangofactory.swagger.models.dto.Operation
 
 
 class ApiOperationSupport {

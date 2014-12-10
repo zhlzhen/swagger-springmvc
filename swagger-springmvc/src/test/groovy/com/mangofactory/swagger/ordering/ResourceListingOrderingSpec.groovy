@@ -1,7 +1,7 @@
 package com.mangofactory.swagger.ordering
 
 import com.google.common.collect.Ordering
-import com.wordnik.swagger.model.ApiListingReference
+import com.mangofactory.swagger.models.dto.ApiListingReference
 import spock.lang.Specification
 
 class ResourceListingOrderingSpec extends Specification {

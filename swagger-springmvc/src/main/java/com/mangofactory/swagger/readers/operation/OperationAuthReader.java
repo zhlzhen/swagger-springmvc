@@ -23,7 +23,7 @@ public class OperationAuthReader implements RequestMappingReader {
 
     HandlerMethod handlerMethod = context.getHandlerMethod();
     String requestMappingPattern = (String) context.get("requestMappingPattern");
-    List<com.wordnik.swagger.model.Authorization> authorizations = newArrayList();
+    List<com.mangofactory.swagger.models.dto.Authorization> authorizations = newArrayList();
 
     if (null != authorizationContext) {
       authorizations = authorizationContext.getAuthorizationsForPath(requestMappingPattern);
@@ -41,16 +41,16 @@ public class OperationAuthReader implements RequestMappingReader {
         for (Authorization authorization : authorizationAnnotations) {
           String value = authorization.value();
           AuthorizationScope[] scopes = authorization.scopes();
-          List<com.wordnik.swagger.model.AuthorizationScope> authorizationScopeList = newArrayList();
+          List<com.mangofactory.swagger.models.dto.AuthorizationScope> authorizationScopeList = newArrayList();
           for (AuthorizationScope authorizationScope : scopes) {
             String description = authorizationScope.description();
             String scope = authorizationScope.scope();
-            authorizationScopeList.add(new com.wordnik.swagger.model.AuthorizationScope(scope, description));
+            authorizationScopeList.add(new com.mangofactory.swagger.models.dto.AuthorizationScope(scope, description));
           }
-          com.wordnik.swagger.model.AuthorizationScope[] authorizationScopes = authorizationScopeList
-                  .toArray(new com.wordnik.swagger.model.AuthorizationScope[authorizationScopeList.size()]);
-          com.wordnik.swagger.model.Authorization authorizationModel =
-                  new com.wordnik.swagger.model.Authorization(value, authorizationScopes);
+          com.mangofactory.swagger.models.dto.AuthorizationScope[] authorizationScopes = authorizationScopeList
+                  .toArray(new com.mangofactory.swagger.models.dto.AuthorizationScope[authorizationScopeList.size()]);
+          com.mangofactory.swagger.models.dto.Authorization authorizationModel =
+                  new com.mangofactory.swagger.models.dto.Authorization(value, authorizationScopes);
           authorizations.add(authorizationModel);
         }
       }

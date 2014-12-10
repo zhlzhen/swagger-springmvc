@@ -1,6 +1,6 @@
 package com.mangofactory.swagger.mixins
 
-import com.wordnik.swagger.model.ApiDescription
+import com.mangofactory.swagger.models.dto.ApiDescription
 
 
 class ApiDescriptionSupport {

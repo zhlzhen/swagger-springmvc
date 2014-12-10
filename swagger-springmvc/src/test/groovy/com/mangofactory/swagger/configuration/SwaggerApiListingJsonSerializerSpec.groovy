@@ -1,14 +1,7 @@
 package com.mangofactory.swagger.configuration
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.module.SimpleModule
-
-import com.mangofactory.swagger.dummy.DummyModels
 import com.mangofactory.swagger.mixins.ApiListingSupport
 import com.mangofactory.swagger.mixins.AuthSupport
-import com.wordnik.swagger.model.ApiListing
-import com.wordnik.swagger.model.Authorization
-import com.wordnik.swagger.model.Model
-import groovy.json.JsonSlurper
 import spock.lang.Specification
 
 

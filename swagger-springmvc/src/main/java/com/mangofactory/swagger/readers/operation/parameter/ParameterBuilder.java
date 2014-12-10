@@ -5,9 +5,9 @@ import com.google.common.base.Optional;
 import com.mangofactory.swagger.models.Annotations;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 import com.wordnik.swagger.annotations.ApiParam;
-import com.wordnik.swagger.model.AllowableListValues;
-import com.wordnik.swagger.model.AllowableValues;
-import com.wordnik.swagger.model.Parameter;
+import com.mangofactory.swagger.models.dto.AllowableListValues;
+import com.mangofactory.swagger.models.dto.AllowableValues;
+import com.mangofactory.swagger.models.dto.Parameter;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;

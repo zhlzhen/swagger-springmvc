@@ -1,4 +1,16 @@
 package com.mangofactory.swagger.mixins
+
+import com.mangofactory.swagger.models.dto.Authorization
+import com.mangofactory.swagger.models.dto.AuthorizationCodeGrant
+import com.mangofactory.swagger.models.dto.AuthorizationScope
+import com.mangofactory.swagger.models.dto.AuthorizationType
+import com.mangofactory.swagger.models.dto.GrantType
+import com.mangofactory.swagger.models.dto.ImplicitGrant
+import com.mangofactory.swagger.models.dto.LoginEndpoint
+import com.mangofactory.swagger.models.dto.OAuth
+import com.mangofactory.swagger.models.dto.OAuthBuilder
+import com.mangofactory.swagger.models.dto.TokenEndpoint
+import com.mangofactory.swagger.models.dto.TokenRequestEndpoint
 import com.wordnik.swagger.model.*
 
 import static com.google.common.collect.Lists.newArrayList

@@ -2,7 +2,7 @@ package com.mangofactory.swagger.ordering;
 
 import com.google.common.collect.Ordering;
 import com.google.common.primitives.Ints;
-import com.wordnik.swagger.model.Operation;
+import com.mangofactory.swagger.models.dto.Operation;
 
 public class OperationPositionalOrdering extends Ordering<Operation> {
   @Override

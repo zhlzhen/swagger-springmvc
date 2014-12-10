@@ -1,7 +1,7 @@
 package com.mangofactory.swagger.ordering;
 
 import com.google.common.collect.Ordering;
-import com.wordnik.swagger.model.ApiDescription;
+import com.mangofactory.swagger.models.dto.ApiDescription;
 
 public class ApiDescriptionLexicographicalOrdering extends Ordering<ApiDescription> {
   @Override

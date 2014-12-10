@@ -3,8 +3,8 @@ package com.mangofactory.swagger.models;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.common.base.Function;
 import com.google.common.base.Optional;
-import com.wordnik.swagger.model.AllowableListValues;
-import com.wordnik.swagger.model.AllowableValues;
+import com.mangofactory.swagger.models.dto.AllowableListValues;
+import com.mangofactory.swagger.models.dto.AllowableValues;
 import org.springframework.core.annotation.AnnotationUtils;
 
 import java.lang.reflect.Method;

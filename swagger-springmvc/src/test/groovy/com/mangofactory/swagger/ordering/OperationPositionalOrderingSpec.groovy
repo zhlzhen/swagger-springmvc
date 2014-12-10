@@ -2,7 +2,7 @@ package com.mangofactory.swagger.ordering
 
 import com.google.common.collect.Ordering
 import com.mangofactory.swagger.mixins.ApiOperationSupport
-import com.wordnik.swagger.model.Operation
+import com.mangofactory.swagger.models.dto.Operation
 import spock.lang.Specification
 
 @Mixin(ApiOperationSupport)

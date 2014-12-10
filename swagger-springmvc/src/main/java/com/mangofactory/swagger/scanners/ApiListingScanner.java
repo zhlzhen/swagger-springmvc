@@ -17,10 +17,10 @@ import com.mangofactory.swagger.readers.ApiModelReader;
 import com.mangofactory.swagger.readers.Command;
 import com.mangofactory.swagger.readers.MediaTypeReader;
 import com.mangofactory.swagger.readers.operation.RequestMappingReader;
-import com.wordnik.swagger.model.ApiDescription;
-import com.wordnik.swagger.model.ApiListing;
-import com.wordnik.swagger.model.Authorization;
-import com.wordnik.swagger.model.Model;
+import com.mangofactory.swagger.models.dto.ApiDescription;
+import com.mangofactory.swagger.models.dto.ApiListing;
+import com.mangofactory.swagger.models.dto.Authorization;
+import com.mangofactory.swagger.models.dto.Model;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

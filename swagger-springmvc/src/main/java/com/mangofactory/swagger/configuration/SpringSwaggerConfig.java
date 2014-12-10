@@ -11,7 +11,7 @@ import com.mangofactory.swagger.models.configuration.SwaggerModelsConfiguration;
 import com.mangofactory.swagger.paths.RelativeSwaggerPathProvider;
 import com.mangofactory.swagger.paths.SwaggerPathProvider;
 import com.mangofactory.swagger.plugin.SwaggerPluginAdapter;
-import com.wordnik.swagger.model.ResponseMessage;
+import com.mangofactory.swagger.models.dto.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

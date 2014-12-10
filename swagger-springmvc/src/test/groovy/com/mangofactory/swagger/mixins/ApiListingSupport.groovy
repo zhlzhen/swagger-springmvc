@@ -1,8 +1,8 @@
 package com.mangofactory.swagger.mixins
-import com.wordnik.swagger.model.ApiListing
-import com.wordnik.swagger.model.ApiListingReference
-import com.wordnik.swagger.model.OAuth
-import com.wordnik.swagger.model.ResourceListing
+import com.mangofactory.swagger.models.dto.ApiListing
+import com.mangofactory.swagger.models.dto.ApiListingReference
+import com.mangofactory.swagger.models.dto.OAuth
+import com.mangofactory.swagger.models.dto.ResourceListing
 
 
 class ApiListingSupport {

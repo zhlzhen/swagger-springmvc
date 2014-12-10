@@ -2,8 +2,8 @@ package com.mangofactory.swagger.models
 
 import com.mangofactory.swagger.mixins.ModelProviderSupport
 import com.mangofactory.swagger.mixins.TypesForTestingSupport
-import com.wordnik.swagger.model.Model
-import com.wordnik.swagger.model.ModelRef
+import com.mangofactory.swagger.models.dto.Model
+import com.mangofactory.swagger.models.dto.ModelRef
 import org.springframework.http.HttpHeaders
 import spock.lang.Specification
 import spock.lang.Unroll

@@ -11,6 +11,12 @@ import com.mangofactory.swagger.models.DefaultModelProvider
 import com.mangofactory.swagger.models.ModelDependencyProvider
 import com.mangofactory.swagger.models.ModelProvider
 import com.mangofactory.swagger.models.ObjectMapperBeanPropertyNamingStrategy
+import com.mangofactory.swagger.models.dto.ApiInfo
+import com.mangofactory.swagger.models.dto.ApiKey
+import com.mangofactory.swagger.models.dto.ApiListing
+import com.mangofactory.swagger.models.dto.ApiListingReference
+import com.mangofactory.swagger.models.dto.AuthorizationType
+import com.mangofactory.swagger.models.dto.ResourceListing
 import com.mangofactory.swagger.models.property.bean.AccessorsProvider
 import com.mangofactory.swagger.models.property.bean.BeanModelPropertyProvider
 import com.mangofactory.swagger.models.property.constructor.ConstructorModelPropertyProvider
