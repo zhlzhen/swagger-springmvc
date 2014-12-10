@@ -58,7 +58,7 @@ class ApiModelReaderSpec extends Specification {
       nameProp.getType() == 'string'
       nameProp.getQualifiedType() == 'java.lang.String'
       nameProp.getPosition() == 0
-      nameProp.getRequired() == false
+      nameProp.isRequired() == false
       nameProp.getDescription() == null
 //      "${nameProp.allowableValues().getClass()}".contains('com.wordnik.swagger.model.AnyAllowableValues')
       nameProp.getItems() == null
@@ -95,10 +95,10 @@ class ApiModelReaderSpec extends Specification {
       ModelProperty prop = modelProps.name
       prop.getType() == 'string'
       prop.getDescription() == 'The name of this business'
-      prop.getRequired() == true
+      prop.isRequired() == true
 
       modelProps.numEmployees.getDescription() == 'Total number of current employees'
-      modelProps.numEmployees.getRequired() == false
+      modelProps.numEmployees.isRequired() == false
   }
 
   def "Should pull models from Api Operation response class"() {

@@ -32,7 +32,7 @@ public class ModelProperty {
     return position;
   }
 
-  public Boolean getRequired() {
+  public Boolean isRequired() {
     return required;
   }
 

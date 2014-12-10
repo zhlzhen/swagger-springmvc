@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.mangofactory.swagger.models.dto.ApiListing;
 import com.mangofactory.swagger.models.dto.ResourceListing;
@@ -14,13 +15,22 @@ public class SwaggerJacksonProvider {
 
   public SwaggerJacksonProvider() {
     this.objectMapper = new ObjectMapper();
-    objectMapper.setVisibilityChecker(
-            objectMapper.getSerializationConfig().getDefaultVisibilityChecker()
+    configure(this.objectMapper);
+  }
+
+  private void configure(ObjectMapper mapper) {
+    mapper.setVisibilityChecker(
+            mapper.getSerializationConfig().getDefaultVisibilityChecker()
                     .withFieldVisibility(JsonAutoDetect.Visibility.ANY)
                     .withGetterVisibility(JsonAutoDetect.Visibility.NONE)
                     .withSetterVisibility(JsonAutoDetect.Visibility.NONE)
                     .withCreatorVisibility(JsonAutoDetect.Visibility.NONE));
-    objectMapper.configure(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY, true);
+    configureSerializationFeatures(mapper);
+  }
+
+  private void configureSerializationFeatures(ObjectMapper mapper) {
+    mapper.configure(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY, true);
+    mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
   }
 
   public Module swaggerJacksonModule() {

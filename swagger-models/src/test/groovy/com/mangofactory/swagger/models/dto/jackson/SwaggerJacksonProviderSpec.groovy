@@ -1,7 +1,10 @@
 package com.mangofactory.swagger.models.dto.jackson
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
+import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.Module
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.databind.introspect.VisibilityChecker
 import spock.lang.Specification
 
@@ -23,5 +26,16 @@ class SwaggerJacksonProviderSpec extends Specification {
     expect:
       module._serializers._classMappings.size() == 2
 
+  }
+
+  def "should configure serialization features"() {
+    SwaggerJacksonProvider swaggerJacksonProvider = new SwaggerJacksonProvider()
+
+    ObjectMapper objectMapper = Mock {
+      1 * configure(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY, true)
+      1 * configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
+    }
+    expect:
+      swaggerJacksonProvider.configureSerializationFeatures(objectMapper)
   }
 }
