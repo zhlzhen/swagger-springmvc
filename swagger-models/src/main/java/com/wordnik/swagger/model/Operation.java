@@ -1,12 +1,14 @@
 package com.wordnik.swagger.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class Operation {
-
   private final String method;
   private final String summary;
   private final String notes;
+  @JsonProperty("type")
   private final String responseClass;
   private final String nickname;
   private final int position;

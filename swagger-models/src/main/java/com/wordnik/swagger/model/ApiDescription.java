@@ -1,7 +1,10 @@
 package com.wordnik.swagger.model;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import java.util.List;
 
+@JsonPropertyOrder({"path", "description", "hidden", "operations"})
 public class ApiDescription {
   private final String path;
   private final String description;

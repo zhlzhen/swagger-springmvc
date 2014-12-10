@@ -25,4 +25,8 @@ class InternalJsonSerializationSpec extends Specification {
     }
     json
   }
+
+  def writePretty(object){
+    objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(object)
+  }
 }
