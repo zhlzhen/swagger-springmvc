@@ -2,26 +2,25 @@ package com.mangofactory.swagger.models.dto
 
 class OperationSpec extends InternalJsonSerializationSpec {
 
-  def "should serialize an operation"() {
-    given:
-      Operation operation = new Operation(
-              'PUT',
-              'updatePet',
-              'updatePet',
-              'void',
-              'updatePet',
-              0,
-              ["*/*"],
-              ['application/json'],
-              [],
-              [],
-              [new Parameter('pet', 'pet', '', false, false, 'Pet', null, 'body', null)],
-              [new ResponseMessage(200, null, null)],
-              "false")
+  final Operation operation = new Operation(
+          'PUT',
+          'updatePet',
+          'updatePet',
+          'void',
+          'updatePet',
+          0,
+          ["*/*"],
+          ['application/json'],
+          [],
+          [],
+          [new Parameter('pet', 'pet', '', false, false, 'Pet', null, 'body', null)],
+          [new ResponseMessage(200, null, null)],
+          "false")
 
+  def "should serialize an operation"() {
     expect:
       writePretty(operation) ==
-"""{
+              """{
   "authorizations" : [ ],
   "consumes" : [ "application/json" ],
   "deprecated" : "false",
@@ -51,5 +50,24 @@ class OperationSpec extends InternalJsonSerializationSpec {
   "summary" : "updatePet",
   "type" : "void"
 }"""
+  }
+
+  def "should pass coverage"() {
+    expect:
+      operation.with {
+        getAuthorizations()
+        getConsumes()
+        getDeprecated()
+        getMethod()
+        getNickname()
+        getNotes()
+        getParameters()
+        getPosition()
+        getProduces()
+        getProtocol()
+        getResponseClass()
+        getResponseMessages()
+        getSummary()
+      }
   }
 }

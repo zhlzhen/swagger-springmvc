@@ -56,7 +56,7 @@ class ResourceListingSpec extends InternalJsonSerializationSpec {
             "Contact Email",
             "Licence Type",
             "License URL"
-    );
+    )
     apiInfo
   }
 }

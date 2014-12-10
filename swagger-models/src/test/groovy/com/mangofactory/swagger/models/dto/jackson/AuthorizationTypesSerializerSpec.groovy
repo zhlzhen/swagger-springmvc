@@ -1,16 +1,6 @@
 package com.mangofactory.swagger.models.dto.jackson
 
-import com.mangofactory.swagger.models.dto.AuthorizationCodeGrant
-import com.mangofactory.swagger.models.dto.AuthorizationScope
-import com.mangofactory.swagger.models.dto.GrantType
-import com.mangofactory.swagger.models.dto.ImplicitGrant
-import com.mangofactory.swagger.models.dto.InternalJsonSerializationSpec
-import com.mangofactory.swagger.models.dto.LoginEndpoint
-import com.mangofactory.swagger.models.dto.OAuth
-import com.mangofactory.swagger.models.dto.OAuthBuilder
-import com.mangofactory.swagger.models.dto.TokenEndpoint
-import com.mangofactory.swagger.models.dto.TokenRequestEndpoint
-import com.wordnik.swagger.model.*
+import com.mangofactory.swagger.models.dto.*
 
 class AuthorizationTypesSerializerSpec extends InternalJsonSerializationSpec {
 
