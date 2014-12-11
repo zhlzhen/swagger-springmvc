@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
 public class Parameter {
-
   @JsonProperty
   @JsonUnwrapped
   private final ParameterType parameterType;
@@ -14,6 +13,8 @@ public class Parameter {
   private final Boolean required;
   private final Boolean allowMultiple;
   private final String dataType;
+  @JsonProperty
+  @JsonUnwrapped
   private final AllowableValues allowableValues;
   private final String paramType;
   private final String paramAccess;

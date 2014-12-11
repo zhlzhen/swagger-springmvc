@@ -1,8 +1,11 @@
 package com.mangofactory.swagger.models.dto;
 
-public class AllowableRangeValues implements AllowableValues{
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+public class AllowableRangeValues implements AllowableValues {
+  @JsonProperty("minimum")
   private final String min;
+  @JsonProperty("maximum")
   private final String max;
 
   public AllowableRangeValues(String min, String max) {

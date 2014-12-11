@@ -7,7 +7,7 @@ class ModelPropertySpec extends InternalJsonSerializationSpec {
           1,
           true,
           'decs',
-          new AnyAllowableValues(),
+          null,
           new ModelRef('mtype', 'mref', 'mqual')
   )
 
@@ -15,7 +15,6 @@ class ModelPropertySpec extends InternalJsonSerializationSpec {
     expect:
       //TODO - this does not look right - see https://github.com/swagger-api/swagger-spec/blob/master/versions/1.2.md#529-property-object
       writePretty(modelProperty) == """{
-  "allowableValues" : { },
   "description" : "decs",
   "items" : {
     "qualifiedType" : "mqual",

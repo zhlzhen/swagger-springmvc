@@ -5,10 +5,91 @@ import static com.google.common.collect.Lists.newArrayList
 class ResourceListingSpec extends InternalJsonSerializationSpec {
 
   def "should serialize"() {
-    when:
-      def json = writeAndParse(resourceListing())
-    then:
-      json
+    expect:
+      writePretty(resourceListing()) == """{
+  "apiVersion" : "apiVersion",
+  "apis" : [ {
+    "description" : "description",
+    "path" : "/path",
+    "position" : 3
+  } ],
+  "authorizations" : {
+    "oauth2" : {
+      "grantTypes" : {
+        "implicit" : {
+          "loginEndpoint" : {
+            "url" : "http://petstore.swagger.wordnik.com/oauth/dialog"
+          },
+          "tokenName" : "access_token",
+          "type" : "implicit"
+        },
+        "authorization_code" : {
+          "tokenEndpoint" : {
+            "tokenName" : "auth_code",
+            "url" : "http://petstore.swagger.wordnik.com/oauth/token"
+          },
+          "tokenRequestEndpoint" : {
+            "clientIdName" : "client_id",
+            "clientSecretName" : "client_secret",
+            "url" : "http://petstore.swagger.wordnik.com/oauth/requestToken"
+          },
+          "type" : "authorization_code"
+        }
+      },
+      "scopes" : [ {
+        "description" : "access all",
+        "scope" : "global"
+      } ],
+      "type" : "oauth2"
+    }
+  },
+  "info" : {
+    "contact" : "Contact Email",
+    "description" : "Api Description",
+    "license" : "Licence Type",
+    "licenseUrl" : "License URL",
+    "termsOfServiceUrl" : "Api terms of service",
+    "title" : " Title"
+  },
+  "swaggerVersion" : "swagger version"
+}"""
+  }
+
+  def "should pass coverage"() {
+    expect:
+      ResourceListing api = resourceListing()
+      api.apis
+      api.apiVersion
+      api.authorizations
+      api.info
+      api.swaggerVersion
+  }
+
+  def "should not initialize auth types"() {
+    expect:
+      writePretty(new ResourceListing(
+              "apiVersion",
+              "swagger version",
+              [apiListingReference()],
+              null,
+              apiInfo())) == """{
+  "apiVersion" : "apiVersion",
+  "apis" : [ {
+    "description" : "description",
+    "path" : "/path",
+    "position" : 3
+  } ],
+  "info" : {
+    "contact" : "Contact Email",
+    "description" : "Api Description",
+    "license" : "Licence Type",
+    "licenseUrl" : "License URL",
+    "termsOfServiceUrl" : "Api terms of service",
+    "title" : " Title"
+  },
+  "swaggerVersion" : "swagger version"
+}"""
+
   }
 
 

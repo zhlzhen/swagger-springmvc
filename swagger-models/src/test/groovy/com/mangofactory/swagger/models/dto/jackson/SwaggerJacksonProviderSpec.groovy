@@ -1,6 +1,7 @@
 package com.mangofactory.swagger.models.dto.jackson
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect
+import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.Module
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -34,6 +35,7 @@ class SwaggerJacksonProviderSpec extends Specification {
     ObjectMapper objectMapper = Mock {
       1 * configure(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY, true)
       1 * configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false)
+      1 * setSerializationInclusion(JsonInclude.Include.NON_NULL)
     }
     expect:
       swaggerJacksonProvider.configureSerializationFeatures(objectMapper)

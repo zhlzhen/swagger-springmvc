@@ -14,7 +14,7 @@ class OperationSpec extends InternalJsonSerializationSpec {
           [],
           [],
           [new Parameter('pet', 'pet', '', false, false, 'Pet', null, 'body', null)],
-          [new ResponseMessage(200, null, null)],
+          [new ResponseMessage(200, 'ok', null)],
           "false")
 
   def "should serialize an operation"() {
@@ -29,12 +29,10 @@ class OperationSpec extends InternalJsonSerializationSpec {
   "notes" : "updatePet",
   "parameters" : [ {
     "allowMultiple" : false,
-    "allowableValues" : null,
     "dataType" : "Pet",
     "defaultValue" : "",
     "description" : "pet",
     "name" : "pet",
-    "paramAccess" : null,
     "paramType" : "body",
     "type" : "Pet",
     "required" : false
@@ -44,8 +42,7 @@ class OperationSpec extends InternalJsonSerializationSpec {
   "protocol" : [ ],
   "responseMessages" : [ {
     "code" : 200,
-    "message" : null,
-    "responseModel" : null
+    "message" : "ok"
   } ],
   "summary" : "updatePet",
   "type" : "void"
